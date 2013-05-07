@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>zabbix-agent</id>
+    <title>zabbix-agent</title>
+    <version>2.0.6</version>
+    <authors>Zabbix</authors>
+    <owners>Guilhem Lettron</owners>
+    <summary>zabbix</summary>
+    <description>zabbix</description>
+    <projectUrl>https://github.com/Youscribe/zabbix-agent-chocolatey</projectUrl>
+    <tags>zabbix admin</tags>
+    <copyright>GPL v2</copyright>
+    <licenseUrl>http://www.zabbix.com/license.php</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <!--<iconUrl>https://github.com/__CHOCO_PKG_OWNER_REPO__/raw/master/zabbix/zabbix.gif</iconUrl>-->
+    <!--<dependencies>
+      <dependency id="" version="" />
+    </dependencies>-->
+    <releaseNotes></releaseNotes>
+  </metadata>
+  <files>
+    <file src="tools\**" target="tools" />
+    <!--<file src="content\**" target="content" />-->
+  </files>
+</package>
