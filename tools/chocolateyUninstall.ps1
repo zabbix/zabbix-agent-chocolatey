@@ -10,7 +10,7 @@ try
     $service.Delete()
   }
   
-  Remove-Item $installDir
+  Remove-Item $installDir -recurse
   
   Write-ChocolateySuccess $package
 }
