@@ -8,6 +8,8 @@ $url64 = $url # 64bit URL here or just use the same as $url
 
 $is64bit = [System.IntPtr]::Size -eq 8
 
+$service = Get-WmiObject -Class Win32_Service -Filter "Name='Zabbix Agent'"
+
 # main helpers - these have error handling tucked into them already
 # download and unpack a zip file
 
@@ -23,6 +25,11 @@ try { #error handling is only necessary if you need to do anything in addition t
   # unzips a file to the specified location - auto overwrites existing content
   Get-ChocolateyUnzip "$tempFile" "$tempDir"
   
+  if ($service) { 
+    $service.StopService()
+    $service.Delete()
+	}
+  
   if (!(Test-Path $installDir)) {New-Item $installDir -type directory}
   if ($is64bit) {
     Move-Item $tempDir\bin\win64\* $installDir -force
@@ -36,7 +43,7 @@ try { #error handling is only necessary if you need to do anything in addition t
   # Runs processes asserting UAC, will assert administrative rights - used by Install-ChocolateyInstallPackage
   $zabbixAgentd = Join-Path $installDir "zabbix_agentd.exe"
   $zabbixConf   = Join-Path $installDir "zabbix_agentd.conf"
-  Start-ChocolateyProcessAsAdmin "--config \"$zabbixConf\" --install" "$zabbixAgentd" -validExitCodes @(0,1) #service can be already installed
+  Start-ChocolateyProcessAsAdmin "--config \"$zabbixConf\" --install" "$zabbixAgentd" #service can be already installed
   # add specific folders to the path - any executables found in the chocolatey package folder will already be on the path. This is used in addition to that or for cases when a native installer doesn't add things to the path.
   Install-ChocolateyPath $installDir 'Machine' # Machine will assert administrative rights
   # add specific files as shortcuts to the desktop
