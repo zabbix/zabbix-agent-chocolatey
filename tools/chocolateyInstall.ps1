@@ -27,8 +27,7 @@ try { #error handling is only necessary if you need to do anything in addition t
   
   if ($service) { 
     $service.StopService()
-    $service.Delete()
-	}
+  }
   
   if (!(Test-Path $installDir)) {New-Item $installDir -type directory}
   if ($is64bit) {
@@ -43,7 +42,7 @@ try { #error handling is only necessary if you need to do anything in addition t
   # Runs processes asserting UAC, will assert administrative rights - used by Install-ChocolateyInstallPackage
   $zabbixAgentd = Join-Path $installDir "zabbix_agentd.exe"
   $zabbixConf   = Join-Path $installDir "zabbix_agentd.conf"
-  Start-ChocolateyProcessAsAdmin "--config \"$zabbixConf\" --install" "$zabbixAgentd" #service can be already installed
+  if (!($service)) { Start-ChocolateyProcessAsAdmin "--config `"$zabbixConf`" --install" "$zabbixAgentd" } #service can be already installed
   # add specific folders to the path - any executables found in the chocolatey package folder will already be on the path. This is used in addition to that or for cases when a native installer doesn't add things to the path.
   Install-ChocolateyPath $installDir 'Machine' # Machine will assert administrative rights
   # add specific files as shortcuts to the desktop
