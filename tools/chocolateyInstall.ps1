@@ -1,12 +1,12 @@
 #NOTE: Please remove any commented lines to tidy up prior to releasing the package, including this one
 
 $packageName = 'zabbix-agent' # arbitrary name for the package, used in messages
-$installDir = Join-Path $env:ProgramFiles "Zabbix Agent"
+$installDir = "C:\Program Files\Zabbix Agent"
 
 $url = 'http://www.zabbix.com/downloads/2.0.6/zabbix_agents_2.0.6.win.zip' # download url
 $url64 = $url # 64bit URL here or just use the same as $url
 
-$is64bit = [System.IntPtr]::Size -eq 8
+$is64bit = (Get-WmiObject -Class Win32_OperatingSystem | Select-Object OSArchitecture) -match '64'
 
 $service = Get-WmiObject -Class Win32_Service -Filter "Name='Zabbix Agent'"
 
