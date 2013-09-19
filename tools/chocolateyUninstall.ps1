@@ -1,5 +1,5 @@
 $package = "zabbix-agent"
-$installDir = Join-Path $env:ProgramFiles "Zabbix Agent"
+$installDir = "C:\Program Files\Zabbix Agent"
 
 try
 {
