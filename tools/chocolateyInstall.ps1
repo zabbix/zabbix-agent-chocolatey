@@ -3,7 +3,7 @@
 $packageName = 'zabbix-agent' # arbitrary name for the package, used in messages
 $installDir = "C:\Program Files\Zabbix Agent"
 
-$url = 'http://www.zabbix.com/downloads/2.0.8/zabbix_agents_2.0.8.win.zip' # download url
+$url = 'http://www.zabbix.com/downloads/2.2.1/zabbix_agents_2.2.1.win.zip' # download url
 $url64 = $url # 64bit URL here or just use the same as $url
 
 $is64bit = (Get-WmiObject -Class Win32_OperatingSystem | Select-Object OSArchitecture) -match '64'
