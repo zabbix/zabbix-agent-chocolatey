@@ -4,12 +4,11 @@
     <id>zabbix-agent</id>
     <title>zabbix-agent</title>
     <version>2.4.1</version>
-    <authors>Zabbix</authors>
-    <owners>Guilhem Lettron</owners>
-    <summary>zabbix</summary>
-    <description>zabbix</description>
-    <projectUrl>https://github.com/Youscribe/zabbix-agent-chocolatey</projectUrl>
-    <tags>zabbix admin</tags>
+    <authors>Zabbix SIA, Gene Liverman</authors>
+    <owners>Gene Liverman,Guilhem Lettron</owners>
+    <description>Installs the Zabbix agent using the pre-compiled files from zabbix.com.</description>
+    <projectUrl>https://github.com/genebean/zabbix-agent-chocolatey</projectUrl>
+    <tags>zabbix monitoring admin</tags>
     <copyright>GPL v2</copyright>
     <licenseUrl>http://www.zabbix.com/license.php</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
