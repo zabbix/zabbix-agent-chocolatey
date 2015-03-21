@@ -2,24 +2,20 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>zabbix-agent</id>
-    <title>zabbix-agent</title>
-    <version>2.4.1</version>
+    <title>Zabbix Agent</title>
+    <version>2.4.4</version>
     <authors>Zabbix SIA, Gene Liverman</authors>
     <owners>Gene Liverman,Guilhem Lettron</owners>
     <description>Installs the Zabbix agent using the pre-compiled files from zabbix.com.</description>
-    <projectUrl>https://github.com/genebean/zabbix-agent-chocolatey</projectUrl>
+    <projectUrl>http://www.zabbix.com</projectUrl>
     <tags>zabbix monitoring admin</tags>
     <copyright>GPL v2</copyright>
     <licenseUrl>http://www.zabbix.com/license.php</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <!--<iconUrl>https://github.com/__CHOCO_PKG_OWNER_REPO__/raw/master/zabbix/zabbix.gif</iconUrl>-->
-    <!--<dependencies>
-      <dependency id="" version="" />
-    </dependencies>-->
+    <iconUrl>https://cdn.rawgit.com/genebean/zabbix-agent-chocolatey/2.4.4/logo/zabbix_logo_500x131.png</iconUrl>
     <releaseNotes></releaseNotes>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
-    <!--<file src="content\**" target="content" />-->
   </files>
 </package>
