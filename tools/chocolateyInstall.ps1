@@ -1,43 +1,86 @@
-$version = '2.4.4'
+$version      = '2.4.4'
+$id           = 'zabbix-agent'
+$title        = 'Zabbix Agent'
+$url          = "http://www.zabbix.com/downloads/$version/zabbix_agents_$version.win.zip"
+$url64        = $url
 
-$packageName = 'zabbix-agent'
-$installDir = "C:\Program Files\Zabbix Agent"
+$configDir    = Join-Path $env:PROGRAMDATA 'zabbix'
+$zabbixConf   = Join-Path $configDir 'zabbix_agentd.conf'
 
-$url = "http://www.zabbix.com/downloads/$version/zabbix_agents_$version.win.zip"
-$url64 = $url
+$installDir   = Join-Path $env:PROGRAMFILES $title
+$zabbixAgentd = Join-Path $installDir 'zabbix_agentd.exe'
+
+$tempDir      = Join-Path $env:TEMP 'chocolatey\zabbix'
+
+$zipFile      = Join-Path $tempDir "zabbix_agents_$version.win.zip"
+$sampleConfig = Join-Path $tempDir 'conf\zabbix_agentd.win.conf'
+$binFiles     = @('zabbix_agentd.exe', 'zabbix_get.exe', 'zabbix_sender.exe')
+
 
 $is64bit = (Get-WmiObject -Class Win32_OperatingSystem | Select-Object OSArchitecture) -match '64'
 
-$service = Get-WmiObject -Class Win32_Service -Filter "Name='Zabbix Agent'"
+$service = Get-WmiObject -Class Win32_Service -Filter "Name=`'$title`'"
 
 try {
-  $tempDir = "$env:TEMP\chocolatey\zabbix"
-  if (![System.IO.Directory]::Exists($tempDir)) {[System.IO.Directory]::CreateDirectory($tempDir)}
-  $tempFile = Join-Path $tempDir "zabbix_agent.zip"
-  Get-ChocolateyWebFile "$packageName" "$tempFile" "$url" "$url64"
-  Get-ChocolateyUnzip "$tempFile" "$tempDir"
-
   if ($service) {
     $service.StopService()
   }
 
-  if (!(Test-Path $installDir)) {New-Item $installDir -type directory}
+  if (!(Test-Path $configDir)) {
+    New-Item $configDir -type directory
+  }
+
+  if (!(Test-Path $installDir)) {
+    New-Item $installDir -type directory
+  }
+
+  if (!(Test-Path $tempDir)) {
+    New-Item $tempDir -type directory
+  }
+
+  Get-ChocolateyWebFile "$id" "$zipFile" "$url" "$url64"
+  Get-ChocolateyUnzip "$zipFile" "$tempDir"
+
   if ($is64bit) {
-    Move-Item $tempDir\bin\win64\* $installDir -force
+    $binDir = Join-Path $tempDir 'bin\win64'
   } else {
-    Move-Item $tempDir\bin\win32\* $installDir -force
-  }
-  if (!(Test-Path $installDir\zabbix_agentd.conf)) {
-    Move-Item $tempDir\conf\zabbix_agentd.win.conf $installDir\zabbix_agentd.conf
+    $binDir = Join-Path $tempDir 'bin\win32'
   }
 
-  $zabbixAgentd = Join-Path $installDir "zabbix_agentd.exe"
-  $zabbixConf   = Join-Path $installDir "zabbix_agentd.conf"
-  if (!($service)) { Start-ChocolateyProcessAsAdmin "--config `"$zabbixConf`" --install" "$zabbixAgentd" } #service can be already installed
-  Install-ChocolateyPath $installDir 'Machine' # Machine will assert administrative rights
+  foreach ($executable in $binFiles ) {
+    $file = Join-Path $binDir $executable
+    Move-Item $file $installDir -Force
+  }
 
-  Write-ChocolateySuccess "$packageName"
+  if (Test-Path "$installDir\zabbix_agentd.conf") {
+    if ($service) {
+      $service.Delete()
+      Clear-Variable -Name $service
+    }
+
+    Move-Item "$installDir\zabbix_agentd.conf" "$configDir\zabbix_agentd.conf" -Force
+
+  } elseif (Test-Path "$configDir\zabbix_agentd.conf") {
+    $configFile = "$configDir\zabbix_agentd-$version.conf"
+    Move-Item $sampleConfig $configFile -Force
+
+  } else {
+    $configFile = "$configDir\zabbix_agentd.conf"
+    Move-Item $sampleConfig $configFile
+
+  }
+
+  if (!($service)) {
+    Start-ChocolateyProcessAsAdmin "--config `"$zabbixConf`" --install" "$zabbixAgentd"
+  }
+
+  Start-Service -Name $title
+
+  Install-ChocolateyPath $installDir 'Machine'
+
+  Write-ChocolateySuccess "$id"
+
 } catch {
-  Write-ChocolateyFailure "$packageName" "$($_.Exception.Message)"
+  Write-ChocolateyFailure "$id" "$($_.Exception.Message)"
   throw
 }
