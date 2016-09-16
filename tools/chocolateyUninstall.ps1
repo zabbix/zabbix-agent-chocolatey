@@ -15,10 +15,9 @@ try
   Remove-Item $installDir -Recurse
   Remove-Item $configDir -Recurse
 
-  Write-ChocolateySuccess $id
 }
 catch
 {
-  Write-ChocolateyFailure $id "$($_.Exception.Message)"
-  throw
+  Write-Host "Error uninstalling Zabbix Agent"
+  throw $_.Exception
 }

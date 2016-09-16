@@ -78,9 +78,7 @@ try {
 
   Install-ChocolateyPath $installDir 'Machine'
 
-  Write-ChocolateySuccess "$id"
-
 } catch {
-  Write-ChocolateyFailure "$id" "$($_.Exception.Message)"
-  throw
+  Write-Host "Error installing Zabbix Agent"
+  throw $_.Exception
 }
