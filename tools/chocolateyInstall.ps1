@@ -1,64 +1,89 @@
-#NOTE: Please remove any commented lines to tidy up prior to releasing the package, including this one
+﻿$version        = '3.2.0'
+$id             = 'zabbix-agent'
+$title          = 'Zabbix Agent'
+$url            = "https://www.zabbix.com/downloads/$version/zabbix_agents_$version.win.zip"
+$url64          = $url
+$checksum       = "c975565c2395575bf929582e52a8f31d"
+$checksumType   = "md5"
+$checksum64     = $checksum
+$checksumType64 = $checksumType
 
-$packageName = 'zabbix-agent' # arbitrary name for the package, used in messages
-$installDir = "C:\Program Files\Zabbix Agent"
 
-$url = 'http://www.zabbix.com/downloads/2.4.1/zabbix_agents_2.4.1.win.zip' # download url
-$url64 = $url # 64bit URL here or just use the same as $url
+$configDir    = Join-Path $env:PROGRAMDATA 'zabbix'
+$zabbixConf   = Join-Path $configDir 'zabbix_agentd.conf'
+
+$installDir   = Join-Path $env:PROGRAMFILES $title
+$zabbixAgentd = Join-Path $installDir 'zabbix_agentd.exe'
+
+$tempDir      = Join-Path $env:TEMP 'chocolatey\zabbix'
+
+$zipFile      = Join-Path $tempDir "zabbix_agents_$version.win.zip"
+$sampleConfig = Join-Path $tempDir 'conf\zabbix_agentd.win.conf'
+$binFiles     = @('zabbix_agentd.exe', 'zabbix_get.exe', 'zabbix_sender.exe')
+
 
 $is64bit = (Get-WmiObject -Class Win32_OperatingSystem | Select-Object OSArchitecture) -match '64'
 
-$service = Get-WmiObject -Class Win32_Service -Filter "Name='Zabbix Agent'"
+$service = Get-WmiObject -Class Win32_Service -Filter "Name=`'$title`'"
 
-# main helpers - these have error handling tucked into them already
-# download and unpack a zip file
-
-try { #error handling is only necessary if you need to do anything in addition to/instead of the main helpers
-  # other helpers - using any of these means you want to uncomment the error handling up top and at bottom.
-  # downloader that the main helpers use to download items
-  $tempDir = "$env:TEMP\chocolatey\zabbix"
-  if (![System.IO.Directory]::Exists($tempDir)) {[System.IO.Directory]::CreateDirectory($tempDir)}
-  $tempFile = Join-Path $tempDir "zabbix_agent.zip"
-  Get-ChocolateyWebFile "$packageName" "$tempFile" "$url" "$url64"
-  # installer, will assert administrative rights - used by Install-ChocolateyPackage
-  #Install-ChocolateyInstallPackage "$packageName" "$installerType" "$silentArgs" '_FULLFILEPATH_' -validExitCodes $validExitCodes
-  # unzips a file to the specified location - auto overwrites existing content
-  Get-ChocolateyUnzip "$tempFile" "$tempDir"
-  
-  if ($service) { 
+try {
+  if ($service) {
     $service.StopService()
   }
-  
-  if (!(Test-Path $installDir)) {New-Item $installDir -type directory}
+
+  if (!(Test-Path $configDir)) {
+    New-Item $configDir -type directory
+  }
+
+  if (!(Test-Path $installDir)) {
+    New-Item $installDir -type directory
+  }
+
+  if (!(Test-Path $tempDir)) {
+    New-Item $tempDir -type directory
+  }
+
+  Get-ChocolateyWebFile -PackageName "$id" -FileFullPath "$zipFile" -Url "$url" -Url64bit "$url64" -Checksum "$checksum" -ChecksumType "$checksumType" -Checksum64 "$checksum64" -ChecksumType64 "$checksumType64"
+  Get-ChocolateyUnzip "$zipFile" "$tempDir"
+
   if ($is64bit) {
-    Move-Item $tempDir\bin\win64\* $installDir -force
+    $binDir = Join-Path $tempDir 'bin\win64'
   } else {
-    Move-Item $tempDir\bin\win32\* $installDir -force
-  }
-  if (!(Test-Path $installDir\zabbix_agentd.conf)) {
-    Move-Item $tempDir\conf\zabbix_agentd.win.conf $installDir\zabbix_agentd.conf
+    $binDir = Join-Path $tempDir 'bin\win32'
   }
 
-  # Runs processes asserting UAC, will assert administrative rights - used by Install-ChocolateyInstallPackage
-  $zabbixAgentd = Join-Path $installDir "zabbix_agentd.exe"
-  $zabbixConf   = Join-Path $installDir "zabbix_agentd.conf"
-  if (!($service)) { Start-ChocolateyProcessAsAdmin "--config `"$zabbixConf`" --install" "$zabbixAgentd" } #service can be already installed
-  # add specific folders to the path - any executables found in the chocolatey package folder will already be on the path. This is used in addition to that or for cases when a native installer doesn't add things to the path.
-  Install-ChocolateyPath $installDir 'Machine' # Machine will assert administrative rights
-  # add specific files as shortcuts to the desktop
-  #$target = Join-Path $MyInvocation.MyCommand.Definition "$($packageName).exe"
-  #Install-ChocolateyDesktopLink $target
-  
-  #------- ADDITIONAL SETUP -------#
-  # make sure to uncomment the error handling if you have additional setup to do
+  foreach ($executable in $binFiles ) {
+    $file = Join-Path $binDir $executable
+    Move-Item $file $installDir -Force
+  }
 
-  #$processor = Get-WmiObject Win32_Processor
-  #$is64bit = $processor.AddressWidth -eq 64
+  if (Test-Path "$installDir\zabbix_agentd.conf") {
+    if ($service) {
+      $service.Delete()
+      Clear-Variable -Name $service
+    }
 
-  
-  # the following is all part of error handling
-  Write-ChocolateySuccess "$packageName"
+    Move-Item "$installDir\zabbix_agentd.conf" "$configDir\zabbix_agentd.conf" -Force
+
+  } elseif (Test-Path "$configDir\zabbix_agentd.conf") {
+    $configFile = "$configDir\zabbix_agentd-$version.conf"
+    Move-Item $sampleConfig $configFile -Force
+
+  } else {
+    $configFile = "$configDir\zabbix_agentd.conf"
+    Move-Item $sampleConfig $configFile
+
+  }
+
+  if (!($service)) {
+    Start-ChocolateyProcessAsAdmin "--config `"$zabbixConf`" --install" "$zabbixAgentd"
+  }
+
+  Start-Service -Name $title
+
+  Install-ChocolateyPath $installDir 'Machine'
+
 } catch {
-  Write-ChocolateyFailure "$packageName" "$($_.Exception.Message)"
-  throw 
+  Write-Host "Error installing Zabbix Agent"
+  throw $_.Exception
 }

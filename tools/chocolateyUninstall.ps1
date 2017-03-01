@@ -1,21 +1,23 @@
-$package = "zabbix-agent"
-$installDir = "C:\Program Files\Zabbix Agent"
+$id         = 'zabbix-agent'
+$title      = 'Zabbix Agent'
+$installDir = Join-Path $env:PROGRAMFILES $title
+$configDir  = Join-Path $env:PROGRAMDATA 'zabbix'
 
 try
 {
-  # stop helper services if they're running
-  $service = Get-WmiObject -Class Win32_Service -Filter "Name='Zabbix Agent'"
+  $service = Get-WmiObject -Class Win32_Service -Filter "Name=`'$title`'"
+
   if ($service) {
     $service.StopService()
     $service.Delete()
   }
-  
-  Remove-Item $installDir -recurse
-  
-  Write-ChocolateySuccess $package
+
+  Remove-Item $installDir -Recurse
+  Remove-Item $configDir -Recurse
+
 }
 catch
 {
-  Write-ChocolateyFailure $package "$($_.Exception.Message)"
-  throw
+  Write-Host "Error uninstalling Zabbix Agent"
+  throw $_.Exception
 }
