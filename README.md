@@ -13,9 +13,16 @@ Please also file any issues you find using the project's [Issue tracker](https:/
 
 ## Release Notes
 
-#### 2017-03-01 Release 3.0.4  
+
+#### 2017-03-01 Release 3.2.0
+* Bumped up to Zabbix 3.2.0
+* Updated logo
+* Swiched repository references github.com/genebean back to github.com/zabbix
+
+#### 2017-03-01 Release 3.0.4
 * Removed depreciated values from install scripts
 * Bumped up to Zabbix 3.0.4
+* Switched download url to https://
 
 #### 2015-03-22 Release 2.4.4  
 * Moved config file from `$env:ProgramFiles\Zabbix Agent` to `$env:ProgramData\zabbix`

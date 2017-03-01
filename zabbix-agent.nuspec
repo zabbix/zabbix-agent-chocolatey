@@ -3,7 +3,7 @@
   <metadata>
     <id>zabbix-agent</id>
     <title>Zabbix Agent</title>
-    <version>3.0.4</version>
+    <version>3.2.0</version>
     <authors>Gene Liverman</authors>
     <owners>Gene Liverman</owners>
     <description>
@@ -15,19 +15,25 @@ is not overwritten but rather the version number of the new file is appended to 
 if version 2.2.1 is installed and then upgraded to version 2.4.4 you will find the sample 2.4.4 config
 files saved as `zabbix_agentd-2.4.4.conf.`
 
-The source for this Chocolatey package can be found on [GitHub](https://github.com/genebean/zabbix-agent-chocolatey).
-Please also file any issues you find using the project's [Issue tracker](https://github.com/genebean/zabbix-agent-chocolatey/issues).
+The source for this Chocolatey package can be found on [GitHub](https://github.com/zabbix/zabbix-agent-chocolatey).
+Please also file any issues you find using the project's [Issue tracker](https://github.com/zabbix/zabbix-agent-chocolatey/issues).
           </description>
     <projectUrl>http://www.zabbix.com</projectUrl>
     <tags>zabbix monitoring admin</tags>
     <copyright>GPL v2</copyright>
     <licenseUrl>http://www.zabbix.com/license.php</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <iconUrl>https://cdn.rawgit.com/genebean/zabbix-agent-chocolatey/2.4.4/logo/zabbix_logo_500x131.png</iconUrl>
+    <iconUrl>https://cdn.rawgit.com/zabbix/zabbix-agent-chocolatey/3.2.0/logo/zabbix_logo_500x131.png</iconUrl>
     <releaseNotes>
+#### 2017-03-01 Release 3.2.0
+* Bumped up to Zabbix 3.2.0
+* Updated logo
+* Swiched repository references github.com/genebean back to github.com/zabbix
+
 #### 2017-03-01 Release 3.0.4
 * Removed depreciated values from install scripts
 * Bumped up to Zabbix 3.0.4
+* Switched download url to https://
 
 #### 2015-03-22 Release 2.4.4
 * Moved config file from `$env:ProgramFiles\Zabbix Agent` to `$env:ProgramData\zabbix`
