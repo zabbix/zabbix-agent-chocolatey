@@ -1,4 +1,4 @@
-# zabbix-agent-chocolatey
+﻿# zabbix-agent-chocolatey
 This package installs the Zabbix agent using the pre-compiled files from [Zabbix SIA](zabbix.com).
 Executables are placed in `$env:ProgramFiles\Zabbix Agent` which is generally
 `C:\Program Files\Zabbix Agent`. The `zabbix_agentd.conf` file is stored in `$env:ProgramData\zabbix`.
@@ -13,7 +13,11 @@ Please also file any issues you find using the project's [Issue tracker](https:/
 
 ## Release Notes
 
-#### 2015-03-22 Release 2.4.4
+#### 2017-03-01 Release 3.0.4  
+* Removed depreciated values from install scripts
+* Bumped up to Zabbix 3.0.4
+
+#### 2015-03-22 Release 2.4.4  
 * Moved config file from `$env:ProgramFiles\Zabbix Agent` to `$env:ProgramData\zabbix`
 * Reworked `.nuspec` file to adhere to Chocolatey standards
 * Reworked scripts so that all variables are at the top and so that they are less likely to throw

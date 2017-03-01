@@ -1,9 +1,9 @@
-<?xml version="1.0"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>zabbix-agent</id>
     <title>Zabbix Agent</title>
-    <version>2.4.4</version>
+    <version>3.0.4</version>
     <authors>Gene Liverman</authors>
     <owners>Gene Liverman</owners>
     <description>
@@ -25,6 +25,10 @@ Please also file any issues you find using the project's [Issue tracker](https:/
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <iconUrl>https://cdn.rawgit.com/genebean/zabbix-agent-chocolatey/2.4.4/logo/zabbix_logo_500x131.png</iconUrl>
     <releaseNotes>
+#### 2017-03-01 Release 3.0.4
+* Removed depreciated values from install scripts
+* Bumped up to Zabbix 3.0.4
+
 #### 2015-03-22 Release 2.4.4
 * Moved config file from `$env:ProgramFiles\Zabbix Agent` to `$env:ProgramData\zabbix`
 * Reworked `.nuspec` file to adhere to Chocolatey standards
