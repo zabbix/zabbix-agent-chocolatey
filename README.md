@@ -7,8 +7,8 @@ is not overwritten but rather the version number of the new file is appended to 
 if version 2.2.1 is installed and then upgraded to version 2.4.4 you will find the sample 2.4.4 config
 files saved as `zabbix_agentd-2.4.4.conf.`
 
-The source for this Chocolatey package can be found on [GitHub](https://github.com/genebean/zabbix-agent-chocolatey).
-Please also file any issues you find using the project's [Issue tracker](https://github.com/genebean/zabbix-agent-chocolatey/issues).
+The source for this Chocolatey package can be found on [GitHub](https://github.com/zabbix/zabbix-agent-chocolatey).
+Please also file any issues you find using the project's [Issue tracker](https://github.com/zabbix/zabbix-agent-chocolatey/issues).
 
 
 ## Release Notes
