@@ -55,9 +55,6 @@ Please also file any issues you find using the project's [Issue tracker](https:/
     </releaseNotes>
     <!-- =============================== -->    
 
-    <dependencies>
-      <dependency id="chocolatey-uninstall.extension" />
-    </dependencies>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
