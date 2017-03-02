@@ -1,34 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
+<package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
+    <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>zabbix-agent</id>
-    <title>Zabbix Agent</title>
     <version>3.2.0</version>
-    <authors>Gene Liverman</authors>
+    <packageSourceUrl>https://github.com/zabbix/zabbix-agent-chocolatey</packageSourceUrl>
     <owners>Gene Liverman</owners>
+    <!-- ============================== -->
+
+    <!-- == SOFTWARE SPECIFIC SECTION == -->
+    <title>Zabbix Agent</title>
+    <authors>Zabbix SIA</authors>
+    <projectUrl>http://www.zabbix.com</projectUrl>
+    <iconUrl>https://cdn.rawgit.com/zabbix/zabbix-agent-chocolatey/3.2.0/logo/zabbix_logo_500x131.png</iconUrl>
+    <copyright>GPL v2</copyright>
+    <licenseUrl>http://www.zabbix.com/license.php</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>http://www.zabbix.com/manuals</docsUrl>
+    <mailingListUrl>https://lists.sourceforge.net/lists/listinfo/zabbix-users</mailingListUrl>
+    <tags>zabbix monitoring</tags>
+    <summary>The Zabbix agent is used in conjunction with a Zabbix Server to for monitoring a system</summary>
     <description>
 This package installs the Zabbix agent using the pre-compiled files from [Zabbix SIA](zabbix.com).
 Executables are placed in `$env:ProgramFiles\Zabbix Agent` which is generally
 `C:\Program Files\Zabbix Agent`. The `zabbix_agentd.conf` file is stored in `$env:ProgramData\zabbix`.
 On Windows 7 and up this is generally `C:\ProgramData\zabbix`. When new versions are installed the config
 is not overwritten but rather the version number of the new file is appended to the name. For example,
-if version 2.2.1 is installed and then upgraded to version 2.4.4 you will find the sample 2.4.4 config
-files saved as `zabbix_agentd-2.4.4.conf.`
+if version 3.0.4 is installed and then upgraded to version 3.2.0 you will find the sample 3.2.0 config
+files saved as `zabbix_agentd-3.2.0.conf.`
 
 The source for this Chocolatey package can be found on [GitHub](https://github.com/zabbix/zabbix-agent-chocolatey).
 Please also file any issues you find using the project's [Issue tracker](https://github.com/zabbix/zabbix-agent-chocolatey/issues).
-          </description>
-    <projectUrl>http://www.zabbix.com</projectUrl>
-    <tags>zabbix monitoring admin</tags>
-    <copyright>GPL v2</copyright>
-    <licenseUrl>http://www.zabbix.com/license.php</licenseUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <iconUrl>https://cdn.rawgit.com/zabbix/zabbix-agent-chocolatey/3.2.0/logo/zabbix_logo_500x131.png</iconUrl>
+    </description>
     <releaseNotes>
 #### 2017-03-01 Release 3.2.0
 * Bumped up to Zabbix 3.2.0
 * Updated logo
 * Swiched repository references github.com/genebean back to github.com/zabbix
+* Updated to newer nuspec config
 
 #### 2017-03-01 Release 3.0.4
 * Removed depreciated values from install scripts
@@ -43,6 +53,11 @@ Please also file any issues you find using the project's [Issue tracker](https:/
 * Made syntax more consistent throughout scripts. For example, changed to use `Join-Path` everywhere
   instead of just in some place.
     </releaseNotes>
+    <!-- =============================== -->    
+
+    <dependencies>
+      <dependency id="chocolatey-uninstall.extension" />
+    </dependencies>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
