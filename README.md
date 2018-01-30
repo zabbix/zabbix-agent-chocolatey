@@ -14,6 +14,10 @@ Please also file any issues you find using the project's [Issue tracker](https:/
 ## Release Notes
 
 
+#### 2018-01-30 Release 3.4.6
+* Bumped up to Zabbix 3.4.6
+* Fix logo for nuspec config
+
 #### 2017-03-01 Release 3.2.0
 * Bumped up to Zabbix 3.2.0
 * Updated logo

@@ -13,7 +13,7 @@
     <title>Zabbix Agent</title>
     <authors>Zabbix SIA</authors>
     <projectUrl>http://www.zabbix.com</projectUrl>
-    <iconUrl>https://cdn.rawgit.com/zabbix/zabbix-agent-chocolatey/3.2.0/logo/zabbix_logo_500x131.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/zabbix/zabbix-agent-chocolatey/master/logo/zabbix_logo_500x131.png</iconUrl>
     <copyright>GPL v2</copyright>
     <licenseUrl>http://www.zabbix.com/license.php</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -34,6 +34,10 @@ The source for this Chocolatey package can be found on [GitHub](https://github.c
 Please also file any issues you find using the project's [Issue tracker](https://github.com/zabbix/zabbix-agent-chocolatey/issues).
     </description>
     <releaseNotes>
+#### 2018-01-30 Release 3.4.6
+* Bumped up to Zabbix 3.4.6
+* Fix logo for nuspec config
+
 #### 2017-03-01 Release 3.2.0
 * Bumped up to Zabbix 3.2.0
 * Updated logo

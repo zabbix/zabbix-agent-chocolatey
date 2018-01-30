@@ -1,9 +1,9 @@
-﻿$version        = '3.2.0'
+﻿$version        = '3.4.6'
 $id             = 'zabbix-agent'
 $title          = 'Zabbix Agent'
 $url            = "https://www.zabbix.com/downloads/$version/zabbix_agents_$version.win.zip"
 $url64          = $url
-$checksum       = "c975565c2395575bf929582e52a8f31d"
+$checksum       = "7ca9e6d059032d9d5b6c49a853850bc9"
 $checksumType   = "md5"
 $checksum64     = $checksum
 $checksumType64 = $checksumType
