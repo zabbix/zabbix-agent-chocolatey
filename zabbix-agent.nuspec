@@ -19,7 +19,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://www.zabbix.com/manuals</docsUrl>
     <mailingListUrl>https://sourceforge.net/projects/zabbix/lists/zabbix-users</mailingListUrl>
-    <tags>zabbix monitoring</tags>
+    <tags>zabbix monitoring admin</tags>
     <summary>The Zabbix agent is used in conjunction with a Zabbix Server to for monitoring a system.</summary>
     <description>
 This package installs the Zabbix agent using the pre-compiled files from [Zabbix SIA](https://www.zabbix.com/).
