@@ -1,20 +1,16 @@
 ﻿# zabbix-agent-chocolatey
-This package installs the Zabbix agent using the pre-compiled files from [Zabbix SIA](zabbix.com).
-Executables are placed in `$env:ProgramFiles\Zabbix Agent` which is generally
-`C:\Program Files\Zabbix Agent`. The `zabbix_agentd.conf` file is stored in `$env:ProgramData\zabbix`.
-On Windows 7 and up this is generally `C:\ProgramData\zabbix`. When new versions are installed the config
-is not overwritten but rather the version number of the new file is appended to the name. For example,
-if version 2.2.1 is installed and then upgraded to version 2.4.4 you will find the sample 2.4.4 config
-files saved as `zabbix_agentd-2.4.4.conf.`
+This package installs the Zabbix agent using the pre-compiled files from [Zabbix SIA](https://www.zabbix.com/).
 
-The source for this Chocolatey package can be found on [GitHub](https://github.com/zabbix/zabbix-agent-chocolatey).
-Please also file any issues you find using the project's [Issue tracker](https://github.com/zabbix/zabbix-agent-chocolatey/issues).
+Executables are placed in `%ProgramFiles%\Zabbix Agent` and the zabbix_agentd.conf file is stored in `%ProgramData%\zabbix`. When new versions of the agent are installed, the config is not overwritten but rather the version number of the new file is appended to the name. For example, if version 3.2.0 is installed and then upgraded to version 3.4.6 you will find the sample 3.4.6 config files saved as “zabbix_agentd-3.4.6.conf”.
+
+The source code for this Chocolatey package can be found on [GitHub](https://github.com/zabbix/zabbix-agent-chocolatey). Please file any issues you find in the project's [Issue tracker](https://github.com/zabbix/zabbix-agent-chocolatey/issues).
+
 
 
 ## Release Notes
 
 
-#### 2018-01-30 Release 3.4.6
+#### 2018-05-25 Release 3.4.6
 * Bumped up to Zabbix 3.4.6
 * Fix logo for nuspec config
 
