@@ -23,6 +23,7 @@ The source code for this Chocolatey package can be found on [GitHub](https://git
     <bugTrackerUrl>https://support.zabbix.com/</bugTrackerUrl>
     <packageSourceUrl>https://github.com/zabbix/zabbix-agent-chocolatey</packageSourceUrl>
     <mailingListUrl>https://lists.sourceforge.net/lists/listinfo/zabbix-announce</mailingListUrl>
+    <releaseNotes>https://github.com/zabbix/zabbix-agent-chocolatey/releases</releaseNotes>
     <tags>zabbix monitoring admin</tags>
     <licenseUrl>https://www.zabbix.com/license</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
