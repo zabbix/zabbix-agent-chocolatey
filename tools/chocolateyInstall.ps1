@@ -1,25 +1,24 @@
-﻿$version        = '3.4.6'
+﻿$version        = '4.0.0'
 $id             = 'zabbix-agent'
 $title          = 'Zabbix Agent'
-$url            = "https://www.zabbix.com/downloads/$version/zabbix_agents_$version.win.zip"
-$url64          = $url
-$checksum       = "7ca9e6d059032d9d5b6c49a853850bc9"
+$url            = "https://www.zabbix.com/downloads/$version/zabbix_agents-$version-win-i386.zip"
+$url64          = "https://www.zabbix.com/downloads/$version/zabbix_agents-$version-win-amd64.zip"
+$checksum       = "c3c2d5701bf1ade0e3a2c4dc63bb4dcd"
 $checksumType   = "md5"
-$checksum64     = $checksum
-$checksumType64 = $checksumType
+$checksum64     = "21a65223a730b35d75b3f2b8415deeca"
+$checksumType64 = "md5"
 
+$configDir      = Join-Path $env:PROGRAMDATA 'zabbix'
+$zabbixConf     = Join-Path $configDir 'zabbix_agentd.conf'
 
-$configDir    = Join-Path $env:PROGRAMDATA 'zabbix'
-$zabbixConf   = Join-Path $configDir 'zabbix_agentd.conf'
+$installDir     = Join-Path $env:PROGRAMFILES $title
+$zabbixAgentd   = Join-Path $installDir 'zabbix_agentd.exe'
 
-$installDir   = Join-Path $env:PROGRAMFILES $title
-$zabbixAgentd = Join-Path $installDir 'zabbix_agentd.exe'
+$tempDir        = Join-Path $env:TEMP 'chocolatey\zabbix'
+$binDir         = Join-Path $tempDir 'bin'
+$binFiles       = @('zabbix_agentd.exe', 'zabbix_get.exe', 'zabbix_sender.exe')
+$sampleConfig   = Join-Path $tempDir 'conf\zabbix_agentd.win.conf'
 
-$tempDir      = Join-Path $env:TEMP 'chocolatey\zabbix'
-
-$zipFile      = Join-Path $tempDir "zabbix_agents_$version.win.zip"
-$sampleConfig = Join-Path $tempDir 'conf\zabbix_agentd.win.conf'
-$binFiles     = @('zabbix_agentd.exe', 'zabbix_get.exe', 'zabbix_sender.exe')
 
 
 $is64bit = (Get-WmiObject -Class Win32_OperatingSystem | Select-Object OSArchitecture) -match '64'
@@ -43,14 +42,14 @@ try {
     New-Item $tempDir -type directory
   }
 
+  if ($is64bit) {
+    $zipFile = Join-Path $tempDir "zabbix_agents_$version.win-amd64.zip"
+  } else {
+    $zipFile = Join-Path $tempDir "zabbix_agents_$version.win-i386.zip"
+  }
+
   Get-ChocolateyWebFile -PackageName "$id" -FileFullPath "$zipFile" -Url "$url" -Url64bit "$url64" -Checksum "$checksum" -ChecksumType "$checksumType" -Checksum64 "$checksum64" -ChecksumType64 "$checksumType64"
   Get-ChocolateyUnzip "$zipFile" "$tempDir"
-
-  if ($is64bit) {
-    $binDir = Join-Path $tempDir 'bin\win64'
-  } else {
-    $binDir = Join-Path $tempDir 'bin\win32'
-  }
 
   foreach ($executable in $binFiles ) {
     $file = Join-Path $binDir $executable

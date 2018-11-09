@@ -2,59 +2,31 @@
 <!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
-    <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>zabbix-agent</id>
-    <version>3.4.6</version>
-    <packageSourceUrl>https://github.com/zabbix/zabbix-agent-chocolatey</packageSourceUrl>
+    <title>Zabbix Agent</title>    
+    <version>4.0.0</version>
+    <authors>Zabbix LLC</authors>
     <owners>Gene Liverman</owners>
-    <!-- ============================== -->
-
-    <!-- == SOFTWARE SPECIFIC SECTION == -->
-    <title>Zabbix Agent</title>
-    <authors>Zabbix SIA</authors>
-    <projectUrl>https://www.zabbix.com/</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/zabbix/zabbix-agent-chocolatey/master/logo/zabbix_logo_500x131.png</iconUrl>
-    <copyright>GPL v2</copyright>
-    <licenseUrl>https://www.zabbix.com/license</licenseUrl>
-    <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <docsUrl>https://www.zabbix.com/manuals</docsUrl>
-    <mailingListUrl>https://sourceforge.net/projects/zabbix/lists/zabbix-users</mailingListUrl>
-    <tags>zabbix monitoring admin</tags>
     <summary>The Zabbix agent is used in conjunction with a Zabbix Server to for monitoring a system.</summary>
     <description>
 This package installs the Zabbix agent using the pre-compiled files from [Zabbix SIA](https://www.zabbix.com/).
 
-Executables are placed in `%ProgramFiles%\Zabbix Agent` and the zabbix_agentd.conf file is stored in `%ProgramData%\zabbix`. When new versions of the agent are installed, the config is not overwritten but rather the version number of the new file is appended to the name. For example, if version 3.2.0 is installed and then upgraded to version 3.4.6 you will find the sample 3.4.6 config files saved as “zabbix_agentd-3.4.6.conf”.
+Executables are placed in "%ProgramFiles%\Zabbix Agent" and the zabbix_agentd.conf file is stored in "%ProgramData%\zabbix".
+
+When new versions of the agent are installed, the original config is not overwritten but rather the version number of the new file is appended to the name. For example, if version 3.2.0 is installed and then upgraded to version 4.0.0 you will find the sample 4.0.0 config files saved as “zabbix_agentd-4.0.0.conf”.
 
 The source code for this Chocolatey package can be found on [GitHub](https://github.com/zabbix/zabbix-agent-chocolatey). Please file any issues you find in the project's [Issue tracker](https://github.com/zabbix/zabbix-agent-chocolatey/issues).
-
     </description>
-    <releaseNotes>
-#### 2018-05-25 Release 3.4.6
-* Bumped up to Zabbix 3.4.6
-* Fix logo for nuspec config
-
-#### 2017-03-01 Release 3.2.0
-* Bumped up to Zabbix 3.2.0
-* Updated logo
-* Swiched repository references github.com/genebean back to github.com/zabbix
-* Updated to newer nuspec config
-
-#### 2017-03-01 Release 3.0.4
-* Removed depreciated values from install scripts
-* Bumped up to Zabbix 3.0.4
-* Switched download url to https://
-
-#### 2015-03-22 Release 2.4.4
-* Moved config file from `$env:ProgramFiles\Zabbix Agent` to `$env:ProgramData\zabbix`
-* Reworked `.nuspec` file to adhere to Chocolatey standards
-* Reworked scripts so that all variables are at the top and so that they are less likely to throw
-  errors or fail
-* Made syntax more consistent throughout scripts. For example, changed to use `Join-Path` everywhere
-  instead of just in some place.
-    </releaseNotes>
-    <!-- =============================== -->    
-
+    <projectUrl>https://www.zabbix.com/</projectUrl>
+    <projectSourceUrl>https://github.com/zabbix/zabbix</projectSourceUrl>    
+    <docsUrl>https://www.zabbix.com/manuals</docsUrl>    
+    <bugTrackerUrl>https://support.zabbix.com/</bugTrackerUrl>
+    <packageSourceUrl>https://github.com/zabbix/zabbix-agent-chocolatey</packageSourceUrl>
+    <mailingListUrl>https://lists.sourceforge.net/lists/listinfo/zabbix-announce</mailingListUrl>
+    <tags>zabbix monitoring admin</tags>
+    <licenseUrl>https://www.zabbix.com/license</licenseUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <iconUrl>https://raw.githubusercontent.com/zabbix/zabbix-agent-chocolatey/master/logo/zabbix_logo_500x131.png</iconUrl>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
