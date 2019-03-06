@@ -3,13 +3,17 @@ This package installs the Zabbix agent using the pre-compiled files from [Zabbix
 
 Executables are placed in "%ProgramFiles%\Zabbix Agent" and the zabbix_agentd.conf file is stored in "%ProgramData%\zabbix".
 
-When new versions of the agent are installed, the original config is not overwritten but rather the version number of the new file is appended to the name. For example, if version 3.2.0 is installed and then upgraded to version 4.0.0 you will find the sample 4.0.0 config files saved as “zabbix_agentd-4.0.0.conf”.
+When new versions of the agent are installed, the original config is not overwritten but rather the version number of the new file is appended to the name. For example, if version 4.0.0 is installed and then upgraded to version 4.0.5 you will find the sample 4.0.5 config files saved as “zabbix_agentd-4.0.5.conf”.
 
 The source code for this Chocolatey package can be found on [GitHub](https://github.com/zabbix/zabbix-agent-chocolatey). Please file any issues you find in the project's [Issue tracker](https://github.com/zabbix/zabbix-agent-chocolatey/issues).
 
 
 ## Release Notes
 
+
+#### 2019-03-06 Release 4.0.5
+* Bumped up to Zabbix 4.0.5
+* OpenSSL version now used by default. Larger package size, but offers the greatest compatibility.
 
 #### 2018-11-07 Release 4.0.0
 * Bumped up to Zabbix 4.0.0
@@ -29,7 +33,7 @@ The source code for this Chocolatey package can be found on [GitHub](https://git
 * Bumped up to Zabbix 3.0.4.
 * Switched download url to https://.
 
-#### 2015-03-22 Release 2.4.4  
+#### 2015-03-22 Release 2.4.4
 * Moved config file from `$env:ProgramFiles\Zabbix Agent` to `$env:ProgramData\zabbix`.
 * Reworked `.nuspec` file to adhere to Chocolatey standards.
 * Reworked scripts so that all variables are at the top and so that they are less likely to throw
