@@ -1,11 +1,11 @@
-﻿$version        = '4.0.5'
+﻿$version        = '4.2.1'
 $id             = 'zabbix-agent'
 $title          = 'Zabbix Agent'
 $url            = "https://www.zabbix.com/downloads/$version/zabbix_agents-$version-win-i386-openssl.zip"
 $url64          = "https://www.zabbix.com/downloads/$version/zabbix_agents-$version-win-amd64-openssl.zip"
-$checksum       = "04fce7e09eff681dc6e234bef370e596"
+$checksum       = "eaf131a1e7dda0537e4a633c8f21f50d"
 $checksumType   = "md5"
-$checksum64     = "326c20d6cea4856afb58ad02af5b90eb"
+$checksum64     = "27047d2e15ddd87d879ad596ad699814"
 $checksumType64 = "md5"
 
 $configDir      = Join-Path $env:PROGRAMDATA 'zabbix'
@@ -17,12 +17,9 @@ $zabbixAgentd   = Join-Path $installDir 'zabbix_agentd.exe'
 $tempDir        = Join-Path $env:TEMP 'chocolatey\zabbix'
 $binDir         = Join-Path $tempDir 'bin'
 $binFiles       = @('zabbix_agentd.exe', 'zabbix_get.exe', 'zabbix_sender.exe')
-$sampleConfig   = Join-Path $tempDir 'conf\zabbix_agentd.win.conf'
-
-
+$sampleConfig   = Join-Path $tempDir 'conf\zabbix_agentd.conf'
 
 $is64bit = (Get-WmiObject -Class Win32_OperatingSystem | Select-Object OSArchitecture) -match '64'
-
 $service = Get-WmiObject -Class Win32_Service -Filter "Name=`'$title`'"
 
 try {
@@ -43,9 +40,9 @@ try {
   }
 
   if ($is64bit) {
-    $zipFile = Join-Path $tempDir "zabbix_agents_$version.win-amd64.zip"
+    $zipFile = Join-Path $tempDir "zabbix_agents-$version-win-amd64-openssl.zip"
   } else {
-    $zipFile = Join-Path $tempDir "zabbix_agents_$version.win-i386.zip"
+    $zipFile = Join-Path $tempDir "zabbix_agents-$version-win-i386-openssl.zip"
   }
 
   Get-ChocolateyWebFile -PackageName "$id" -FileFullPath "$zipFile" -Url "$url" -Url64bit "$url64" -Checksum "$checksum" -ChecksumType "$checksumType" -Checksum64 "$checksum64" -ChecksumType64 "$checksumType64"
