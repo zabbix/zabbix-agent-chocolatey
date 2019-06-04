@@ -64,7 +64,7 @@ These parameters can be passed to the installer with the use of `-params`.
 For example :
 `choco install zabbix-agent.install -params '"/SERVER:192.168.6.76 /HOSTNAME:zabbix-agent-1.zabbix.com /ENABLEREMOTECOMMANDS:1 /SKIP:fw"'`
     </description>
-    <releaseNotes>https://github.com/zabbix/zabbix-agent-chocolatey/blob/master/zabbix-agent.install/CHANGELOG</releaseNotes>
+    <releaseNotes>https://github.com/zabbix/zabbix-agent-chocolatey/blob/master/zabbix-agent.install/CHANGELOG.md</releaseNotes>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />

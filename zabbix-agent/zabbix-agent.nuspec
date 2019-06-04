@@ -28,7 +28,7 @@ When new versions of the agent are installed, the original config is not overwri
 
 The source code for this Chocolatey package can be found on [GitHub](https://github.com/zabbix/zabbix-agent-chocolatey). Please file any issues you find in the project's [Issue tracker](https://github.com/zabbix/zabbix-agent-chocolatey/issues).
     </description>
-    <releaseNotes>https://github.com/zabbix/zabbix-agent-chocolatey/blob/master/zabbix-agent/CHANGELOG</releaseNotes>
+    <releaseNotes>https://github.com/zabbix/zabbix-agent-chocolatey/blob/master/zabbix-agent/CHANGELOG.md</releaseNotes>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
