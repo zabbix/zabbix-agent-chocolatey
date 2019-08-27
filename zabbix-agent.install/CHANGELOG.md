@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [4.2.6] - 2019-08-27
+### Changed
+- Bumped up to Zabbix 4.2.6
+
+## [4.0.12] - 2019-08-27
+### Changed
+- Bumped up to Zabbix 4.0.12
+
 ## [4.2.4] - 2019-07-29
 ### Changed
 - Bumped up to Zabbix 4.2.4
