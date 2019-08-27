@@ -1,4 +1,4 @@
-﻿$version        = '4.0.12'
+﻿$version        = '4.2.6'
 $id             = 'zabbix-agent'
 $title          = 'Zabbix Agent'
 $url            = "https://www.zabbix.com/downloads/$version/zabbix_agents-$version-win-i386-openssl.zip"
