@@ -1,8 +1,8 @@
 ﻿$version        = '4.4.1'
 $id             = 'zabbix-agent'
 $title          = 'Zabbix Agent'
-$url            = "https://www.zabbix.com/downloads/$version/zabbix_agents-$version-windows-i386-openssl.zip"
-$url64          = "https://www.zabbix.com/downloads/$version/zabbix_agents-$version-windows-amd64-openssl.zip"
+$url            = "https://www.zabbix.com/downloads/$version/zabbix_agent-$version-windows-i386-openssl.zip"
+$url64          = "https://www.zabbix.com/downloads/$version/zabbix_agent-$version-windows-amd64-openssl.zip"
 $checksum       = '5cf68a5ad4922385c8bc68451e04c419'
 $checksumType   = 'md5'
 $checksum64     = '03266a21522a86011eba965815354865'
@@ -40,9 +40,9 @@ try {
   }
 
   if ($is64bit) {
-    $zipFile = Join-Path $tempDir "zabbix_agents-$version-windows-amd64-openssl.zip"
+    $zipFile = Join-Path $tempDir "zabbix_agent-$version-windows-amd64-openssl.zip"
   } else {
-    $zipFile = Join-Path $tempDir "zabbix_agents-$version-windows-i386-openssl.zip"
+    $zipFile = Join-Path $tempDir "zabbix_agent-$version-windows-i386-openssl.zip"
   }
 
   Get-ChocolateyWebFile -PackageName "$id" -FileFullPath "$zipFile" -Url "$url" -Url64bit "$url64" -Checksum "$checksum" -ChecksumType "$checksumType" -Checksum64 "$checksum64" -ChecksumType64 "$checksumType64"
