@@ -4,7 +4,7 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>zabbix-agent</id>
-    <version>4.4.1</version>
+    <version>4.4.4</version>
     <packageSourceUrl>https://github.com/zabbix/zabbix-agent-chocolatey/tree/master/zabbix-agent</packageSourceUrl>
     <owners>Gene Liverman, Jamie Scott</owners>
     <!-- == SOFTWARE SPECIFIC SECTION == -->
