@@ -1,16 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [4.4.5] - 2020-01-30
+## [5.0.2] - 2020-07-13
 ### Changed
-- Bumped up to Zabbix 4.4.5.
+- Bumped up to Zabbix 5.0.2.
 
-## [4.4.4] - 2020-01-16
-### Changed
-- Bumped up to Zabbix 4.4.4.
-### Fixed
-- URL structure changed on the Zabbix website.
-
-## [4.4.1] - 2019-11-19
+## [5.0.1] - 2020-07-13
 ### Added
-- Support for 4.4.
+- Support for 5.0.
