@@ -13,6 +13,7 @@ function global:au_SearchReplace {
       "(?i)(Url\s*=\s*)('.*')"            = "`$1'$($Latest.URL32)'"
       "(?i)(Checksum\s*=\s*)('.*')"       = "`$1'$($Latest.Checksum32)'"
       "(?i)(ChecksumType\s*=\s*)('.*')"   = "`$1'$($Latest.ChecksumType32)'"
+      "(?i)(version\s*=\s*)('.*')"        = "`$1'$($Latest.Version)'"
     }
     
     ".\zabbix-agent.nuspec" = @{
