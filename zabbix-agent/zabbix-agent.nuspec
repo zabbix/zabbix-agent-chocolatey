@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
@@ -28,7 +28,7 @@ When new versions of the agent are installed, the original config is not overwri
 
 The source code for this Chocolatey package can be found on [GitHub](https://github.com/zabbix/zabbix-agent-chocolatey). Please file any issues you find in the project's [Issue tracker](https://github.com/zabbix/zabbix-agent-chocolatey/issues).
     </description>
-    <releaseNotes>https://github.com/zabbix/zabbix-agent-chocolatey/blob/master/zabbix-agent/CHANGELOG.md</releaseNotes>
+    <releaseNotes>https://www.zabbix.com/release_notes</releaseNotes>
   </metadata>
   <files>
     <file src="tools\**" target="tools" />
