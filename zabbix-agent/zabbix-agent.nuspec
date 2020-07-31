@@ -6,7 +6,7 @@
     <id>zabbix-agent</id>
     <version>5.0.2</version>
     <packageSourceUrl>https://github.com/zabbix/zabbix-agent-chocolatey/tree/master/zabbix-agent</packageSourceUrl>
-    <owners>Gene Liverman, Jamie Scott</owners>
+    <owners>Jamie Scott</owners>
     <!-- == SOFTWARE SPECIFIC SECTION == -->
     <title>Zabbix Agent</title>
     <authors>Zabbix LLC</authors>

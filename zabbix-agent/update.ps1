@@ -1,8 +1,8 @@
 ﻿import-module au
 . $PSScriptRoot\..\_scripts\all.ps1
 
-$product_version = 5.0
-$releases = "https://github.com/zabbix/zabbix/releases"
+$release = '5.0'
+$url = "https://kakers.uk/scripts/zbx_version_check.php?version=$release"
 
 function global:au_SearchReplace {
   @{
@@ -32,12 +32,9 @@ function global:au_SearchReplace {
 }
 
 function global:au_GetLatest {
-  $download_page = Invoke-WebRequest -UseBasicParsing -Uri $releases
-  $regex = "\/zabbix\/zabbix\/archive\/\d{1,3}\.\d{1,3}\.\d{1,3}.zip$"
-  $url = $download_page.links | Where-Object href -match $regex | Where-Object href -match $product_version | Select-Object -First 1 -expand href
 
-  $version = ([Regex]::Matches($url, '(\d+\.\d+.\d+)+'))
-  $version = $version[0].Value
+  $download_page = Invoke-WebRequest -UseBasicParsing -Uri $url
+  $version = ($download_page.Content -split '\n')[0]
 
   @{
     URL32 = "https://www.zabbix.com/downloads/$version/zabbix_agent-$version-windows-i386-openssl.zip"
