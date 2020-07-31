@@ -1,12 +1,6 @@
 ﻿$ErrorActionPreference = 'Stop';
 
-$packageName  = 'zabbix-agent.install'
-$title        = 'Zabbix Agent'
-$version      = '5.0.2'
-$url32        = "https://www.zabbix.com/downloads/$version/zabbix_agent-$version-windows-i386-openssl.msi"
-$url64        = "https://www.zabbix.com/downloads/$version/zabbix_agent-$version-windows-amd64-openssl.msi"
-$checksum32   = 'fba993973141273afe01220f5b79716f'
-$checksum64   = '51683f15798f8f9cce6298d9deeac7bd'
+$title = 'Zabbix Agent'
 
 $installDir = Join-Path $env:PROGRAMFILES $title
 
@@ -34,28 +28,24 @@ $TLSKEYFILE           = if ($pp.TLSKEYFILE) { $pp.TLSKEYFILE } else { '' }
 $ENABLEPATH           = if ($pp.ENABLEPATH) { $pp.ENABLEPATH } else { 0 }
 $SKIP                 = if ($pp.SKIP) { $pp.SKIP } else { 0 }
 
+$SilentArgs = "/qn /norestart"
+$SilentArgs += " INSTALLFOLDER=`"$INSTALLFOLDER`" LOGTYPE=`"$LOGTYPE`" LOGFILE=`"$LOGFILE`" ENABLEREMOTECOMMANDS=`"$ENABLEREMOTECOMMANDS`" SERVER=`"$SERVER`" LISTENPORT=`"$LISTENPORT`" SERVERACTIVE=`"$SERVERACTIVE`" HOSTNAME=`"$HOSTNAME`" TIMEOUT=`"$TIMEOUT`" TLSCONNECT=`"$TLSCONNECT`" TLSACCEPT=`"$TLSACCEPT`" TLSPSKIDENTITY=`"$TLSPSKIDENTITY`" TLSPSKFILE=`"$TLSPSKFILE`" TLSCAFILE=`"$TLSCAFILE`" TLSCRLFILE=`"$TLSCRLFILE`" TLSSERVERCERTISSUER=`"$TLSSERVERCERTISSUER`" TLSSERVERCERTSUBJECT=`"$TLSSERVERCERTSUBJECT`" TLSCERTFILE=`"$TLSCERTFILE`" TLSKEYFILE=`"$TLSKEYFILE`" ENABLEPATH=`"$ENABLEPATH`" SKIP=`"$SKIP`""
+
 # TLSPSKVALUE does not like being set if it isn't being used.
-if ($TLSPSKVALUE -ne 0) {
-  $silentArgs = "/qn /norestart INSTALLFOLDER=`"$INSTALLFOLDER`" LOGTYPE=`"$LOGTYPE`" LOGFILE=`"$LOGFILE`" ENABLEREMOTECOMMANDS=`"$ENABLEREMOTECOMMANDS`" SERVER=`"$SERVER`" LISTENPORT=`"$LISTENPORT`" SERVERACTIVE=`"$SERVERACTIVE`" HOSTNAME=`"$HOSTNAME`" TIMEOUT=`"$TIMEOUT`" TLSCONNECT=`"$TLSCONNECT`" TLSACCEPT=`"$TLSACCEPT`" TLSPSKIDENTITY=`"$TLSPSKIDENTITY`" TLSPSKFILE=`"$TLSPSKFILE`" TLSPSKVALUE=`"$TLSPSKVALUE`" TLSCAFILE=`"$TLSCAFILE`" TLSCRLFILE=`"$TLSCRLFILE`" TLSSERVERCERTISSUER=`"$TLSSERVERCERTISSUER`" TLSSERVERCERTSUBJECT=`"$TLSSERVERCERTSUBJECT`" TLSCERTFILE=`"$TLSCERTFILE`" TLSKEYFILE=`"$TLSKEYFILE`" ENABLEPATH=`"$ENABLEPATH`" SKIP=`"$SKIP`""
-} else {
-  $silentArgs = "/qn /norestart INSTALLFOLDER=`"$INSTALLFOLDER`" LOGTYPE=`"$LOGTYPE`" LOGFILE=`"$LOGFILE`" ENABLEREMOTECOMMANDS=`"$ENABLEREMOTECOMMANDS`" SERVER=`"$SERVER`" LISTENPORT=`"$LISTENPORT`" SERVERACTIVE=`"$SERVERACTIVE`" HOSTNAME=`"$HOSTNAME`" TIMEOUT=`"$TIMEOUT`" TLSCONNECT=`"$TLSCONNECT`" TLSACCEPT=`"$TLSACCEPT`" TLSPSKIDENTITY=`"$TLSPSKIDENTITY`" TLSPSKFILE=`"$TLSPSKFILE`" TLSCAFILE=`"$TLSCAFILE`" TLSCRLFILE=`"$TLSCRLFILE`" TLSSERVERCERTISSUER=`"$TLSSERVERCERTISSUER`" TLSSERVERCERTSUBJECT=`"$TLSSERVERCERTSUBJECT`" TLSCERTFILE=`"$TLSCERTFILE`" TLSKEYFILE=`"$TLSKEYFILE`" ENABLEPATH=`"$ENABLEPATH`" SKIP=`"$SKIP`""
-}
+if ($TLSPSKVALUE -ne 0) { $SilentArgs += " TLSPSKVALUE=`"$TLSPSKVALUE`"" }
 
 $packageArgs = @{
-  packageName    = $packageName
-  fileType       = 'MSI'
-  url            = $url32
-  url64bit       = $url64
+  PackageName    = $env:ChocolateyPackageName
+  FileType       = 'MSI'
+  Url            = 'https://www.zabbix.com/downloads/5.0.2/zabbix_agent-5.0.2-windows-i386-openssl.msi'
+  Url64bit       = 'https://www.zabbix.com/downloads/5.0.2/zabbix_agent-5.0.2-windows-amd64-openssl.msi'
+  Checksum       = '90cf1ba32317479d1674887f446273263921c67d15a850021c1b6b42d56099ad'
+  ChecksumType   = 'sha256'
+  Checksum64     = '0d7af02075e3bfe82209d47c290b619ba74d01aeddcda173be03e0f12bcef432'
+  ChecksumType64 = 'sha256'
 
-  softwareName   = 'Zabbix Agent*'
-
-  checksum       = $checksum32
-  checksumType   = 'md5'
-  checksum64     = $checksum64
-  checksumType64 = 'md5'
-
-  silentArgs     = $silentArgs
-  validExitCodes = @(0, 3010, 1641)
+  SilentArgs     = $SilentArgs
+  ValidExitCodes = @(0, 3010, 1641)
 }
 
-Install-ChocolateyPackage @packageArgs
+Install-ChocolateyPackage @PackageArgs

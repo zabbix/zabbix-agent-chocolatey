@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
@@ -6,7 +6,7 @@
     <id>zabbix-agent.install</id>
     <version>5.0.2</version>
     <packageSourceUrl>https://github.com/zabbix/zabbix-agent-chocolatey/tree/master/zabbix-agent.install</packageSourceUrl>
-    <owners>Gene Liverman, Jamie Scott</owners>
+    <owners>Jamie Scott</owners>
     <!-- == SOFTWARE SPECIFIC SECTION == -->
     <title>Zabbix Agent (Install)</title>
     <authors>Zabbix LLC</authors>
@@ -14,7 +14,7 @@
     <projectSourceUrl>https://github.com/zabbix/zabbix</projectSourceUrl>
     <bugTrackerUrl>https://support.zabbix.com/</bugTrackerUrl>
     <mailingListUrl>https://lists.sourceforge.net/lists/listinfo/zabbix-announce</mailingListUrl>
-    <iconUrl>https://raw.githubusercontent.com/zabbix/zabbix-agent-chocolatey/master/logo/zabbix_logo_500x131.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/zabbix/zabbix-agent-chocolatey/master/zabbix-agent.install/icons/zabbix_logo_500x131.png</iconUrl>
     <licenseUrl>https://www.zabbix.com/license</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://www.zabbix.com/manuals</docsUrl>
