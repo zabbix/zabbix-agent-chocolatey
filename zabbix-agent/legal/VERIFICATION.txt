@@ -23,3 +23,4 @@ Using AU:
 
    x32: Get-RemoteChecksum https://www.zabbix.com/downloads/5.0.2/zabbix_agent-5.0.2-windows-i386-openssl.zip
    x64: Get-RemoteChecksum https://www.zabbix.com/downloads/5.0.2/zabbix_agent-5.0.2-windows-amd64-openssl.zip
+   

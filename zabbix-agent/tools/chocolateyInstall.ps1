@@ -3,9 +3,9 @@ $id             = 'zabbix-agent'
 $title          = 'Zabbix Agent'
 $url            = 'https://www.zabbix.com/downloads/5.0.2/zabbix_agent-5.0.2-windows-i386-openssl.zip'
 $url64          = 'https://www.zabbix.com/downloads/5.0.2/zabbix_agent-5.0.2-windows-amd64-openssl.zip'
-$checksum       = '2d2b834bec04470ca67bd60d8974dcd5fc383e0a73ab559ea6ebe1b12be5508f'
+$checksum       = 'c00fcb26a48f666d415c89082daa5de0d81d56fd3164f2e9d3c6ff1428df8175'
 $checksumType   = 'sha256'
-$checksum64     = 'bc105b2de867fedbc07bd068bf0525b96354b9946958efff7e18f7245e591283'
+$checksum64     = '0374598d608641fc41d0525cf00692543a7908b6dfb1764a356eef987607e73d'
 $checksumType64 = 'sha256'
 
 $configDir      = Join-Path $env:PROGRAMDATA 'zabbix'
@@ -80,6 +80,6 @@ try {
   Install-ChocolateyPath $installDir 'Machine'
 
 } catch {
-  Write-Host "Error installing Zabbix Agent"
+  Write-Host 'Error installing Zabbix Agent'
   throw $_.Exception
 }

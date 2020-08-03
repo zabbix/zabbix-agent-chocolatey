@@ -1,8 +1,7 @@
 ﻿import-module au
 . $PSScriptRoot\..\_scripts\all.ps1
 
-$release = '4.0'
-$url = "https://kakers.uk/scripts/zbx_version_check.php?version=$release"
+$url = 'https://kakers.uk/scripts/zbx_version_check.php'
 
 function global:au_SearchReplace {
   @{
@@ -16,7 +15,7 @@ function global:au_SearchReplace {
       "(?i)(version\s*=\s*)('.*')"        = "`$1'$($Latest.Version)'"
     }
     
-    ".\zabbix-agent-4.0.nuspec" = @{
+    ".\zabbix-agent.nuspec" = @{
       "\<version\>.+" = "<version>$($Latest.Version)</version>"
     }
 
@@ -32,14 +31,31 @@ function global:au_SearchReplace {
 }
 
 function global:au_GetLatest {
-  
+
   $download_page = Invoke-WebRequest -UseBasicParsing -Uri $url
-  $version = ($download_page.Content -split '\n')[0]
-  
+  $versions = $download_page.Content -split '\n'
+  $version50 = ($versions | Select-String -Pattern '5.0.')[0]
+  $version40 = ($versions | Select-String -Pattern '4.0.')[0]
+  $version30 = ($versions | Select-String -Pattern '3.0.')[0]
+
   @{
-    URL32 = "https://www.zabbix.com/downloads/$version/zabbix_agent-$version-windows-i386-openssl.zip"
-    URL64 = "https://www.zabbix.com/downloads/$version/zabbix_agent-$version-windows-amd64-openssl.zip"
-    Version = $version
+    Streams = [ordered] @{
+      '5.0' = @{
+                Version = $version50
+                URL32 = "https://www.zabbix.com/downloads/$version50/zabbix_agent-$version50-windows-i386-openssl.zip"
+                URL64 = "https://www.zabbix.com/downloads/$version50/zabbix_agent-$version50-windows-amd64-openssl.zip"
+              }
+      '4.0' = @{ 
+                Version = $version40
+                URL32 = "https://www.zabbix.com/downloads/$version40/zabbix_agent-$version40-windows-i386-openssl.zip"
+                URL64 = "https://www.zabbix.com/downloads/$version40/zabbix_agent-$version40-windows-amd64-openssl.zip"
+              }
+      '3.0' = @{ 
+                Version = $version30
+                URL32 = "https://www.zabbix.com/downloads/$version30/zabbix_agent-$version30-windows-i386-openssl.zip"
+                URL64 = "https://www.zabbix.com/downloads/$version30/zabbix_agent-$version30-windows-amd64-openssl.zip"
+              }
+    }
   }
 }
 
