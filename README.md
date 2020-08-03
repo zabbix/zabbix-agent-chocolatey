@@ -1,5 +1,5 @@
 
-[![](https://ci.appveyor.com/api/projects/status/github/KakersUK/zabbix-agent-chocolatey?svg=true)](https://ci.appveyor.com/project/KakersUK/zabbix-agent-chocolatey)
+[![Build status](https://ci.appveyor.com/api/projects/status/g3s82g2nt2bt3qle?svg=true)](https://ci.appveyor.com/project/KakersUK/zabbix-agent-chocolatey)
 [Update status](https://gist.github.com/KakersUK/5c9c192f36d8829a12f5c0018e999dd4)
 [![](http://transparent-favicon.info/favicon.ico)](#)
 [chocolatey/KakersUK](https://chocolatey.org/profiles/KakersUK)
