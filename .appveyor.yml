@@ -4,6 +4,9 @@ version: '{build}'
 max_jobs: 1
 # History plugin requires complete log
 #clone_depth: 5
+branches:
+  only:
+  - master
 
 #build:
 #  verbosity: minimal
