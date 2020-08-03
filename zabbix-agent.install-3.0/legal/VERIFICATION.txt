@@ -1,0 +1,25 @@
+VERIFICATION
+
+Verification is intended to assist the Chocolatey moderators and community
+in verifying that this package's contents are trustworthy.
+
+Package can be verified like this:
+
+1. Go to
+
+   x32 url: https://www.zabbix.com/downloads/3.0.31/zabbix_agent-3.0.31-windows-i386-openssl.msi
+   x64 url: https://www.zabbix.com/downloads/3.0.31/zabbix_agent-3.0.31-windows-amd64-openssl.msi
+
+   to download the installer.
+
+2. You can use one of the following methods to obtain the SHA256 checksum:
+   - Use powershell function 'Get-FileHash'
+   - Use Chocolatey utility 'checksum.exe'
+
+   checksum32: 11662eaee9ca3fae8650b6d3d33e222e35294efc64b8f782d75c26933115fa79
+   checksum64: 0f9d5b7bbb5a305fdbb55e2a9ba746c9dd4f8248699aa39c7200228a991f4185
+
+Using AU:
+
+   x32: Get-RemoteChecksum https://www.zabbix.com/downloads/3.0.31/zabbix_agent-3.0.31-windows-i386-openssl.msi
+   x64: Get-RemoteChecksum https://www.zabbix.com/downloads/3.0.31/zabbix_agent-3.0.31-windows-amd64-openssl.msi

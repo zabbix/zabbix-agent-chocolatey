@@ -4,7 +4,7 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>zabbix-agent.install</id>
-    <version>5.0.2</version>
+    <version>4.0.22</version>
     <packageSourceUrl>https://github.com/zabbix/zabbix-agent-chocolatey/tree/master/zabbix-agent.install</packageSourceUrl>
     <owners>Jamie Scott</owners>
     <!-- == SOFTWARE SPECIFIC SECTION == -->
@@ -14,7 +14,7 @@
     <projectSourceUrl>https://github.com/zabbix/zabbix</projectSourceUrl>
     <bugTrackerUrl>https://support.zabbix.com/</bugTrackerUrl>
     <mailingListUrl>https://lists.sourceforge.net/lists/listinfo/zabbix-announce</mailingListUrl>
-    <iconUrl>https://raw.githubusercontent.com/zabbix/zabbix-agent-chocolatey/master/zabbix-agent.install/icons/zabbix_logo_500x131.png</iconUrl>
+    <iconUrl>https://raw.githubusercontent.com/zabbix/zabbix-agent-chocolatey/master/logo/zabbix_logo_500x131.png</iconUrl>
     <licenseUrl>https://www.zabbix.com/license</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://www.zabbix.com/manuals</docsUrl>
