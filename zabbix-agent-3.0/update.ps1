@@ -16,7 +16,7 @@ function global:au_SearchReplace {
       "(?i)(version\s*=\s*)('.*')"        = "`$1'$($Latest.Version)'"
     }
     
-    ".\zabbix-agent.nuspec" = @{
+    ".\zabbix-agent-3.0.nuspec" = @{
       "\<version\>.+" = "<version>$($Latest.Version)</version>"
     }
 

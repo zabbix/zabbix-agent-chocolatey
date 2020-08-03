@@ -15,7 +15,7 @@ function global:au_SearchReplace {
       "(?i)(ChecksumType\s*=\s*)('.*')"   = "`$1'$($Latest.ChecksumType32)'"
     }
     
-    ".\zabbix-agent.install.nuspec" = @{
+    ".\zabbix-agent.install-4.0.nuspec" = @{
       "\<version\>.+" = "<version>$($Latest.Version)</version>"
     }
 
