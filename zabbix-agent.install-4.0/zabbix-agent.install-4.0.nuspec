@@ -3,8 +3,8 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2015/06/nuspec.xsd">
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
-    <id>zabbix-agent.install</id>
-    <version>4.0.22</version>
+    <id>zabbix-agent.install-4.0</id>
+    <version>4.0.23</version>
     <packageSourceUrl>https://github.com/zabbix/zabbix-agent-chocolatey/tree/master/zabbix-agent.install</packageSourceUrl>
     <owners>Jamie Scott</owners>
     <!-- == SOFTWARE SPECIFIC SECTION == -->
