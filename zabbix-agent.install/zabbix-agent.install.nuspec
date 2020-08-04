@@ -14,7 +14,7 @@
     <projectSourceUrl>https://github.com/zabbix/zabbix</projectSourceUrl>
     <bugTrackerUrl>https://support.zabbix.com/</bugTrackerUrl>
     <mailingListUrl>https://lists.sourceforge.net/lists/listinfo/zabbix-announce</mailingListUrl>
-    <iconUrl>https://raw.githubusercontent.com/zabbix/zabbix-agent-chocolatey/master/_icons/zabbix_logo_500x131.png</iconUrl>
+    <iconUrl>https://cdn.statically.io/gh/zabbix/zabbix-agent-chocolatey/master/_icons/zabbix_logo_500x131.png</iconUrl>
     <licenseUrl>https://www.zabbix.com/license</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://www.zabbix.com/manuals</docsUrl>
