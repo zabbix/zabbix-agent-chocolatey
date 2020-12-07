@@ -33,26 +33,32 @@ function global:au_GetLatest {
 
   $download_page = Invoke-WebRequest -UseBasicParsing -Uri $url
   $versions = $download_page.Content -split '\n'
+  $version52 = ($versions | Select-String -Pattern '5.2.')[0]
   $version50 = ($versions | Select-String -Pattern '5.0.')[0]
   $version40 = ($versions | Select-String -Pattern '4.0.')[0]
   $version30 = ($versions | Select-String -Pattern '3.0.')[0]
 
   @{
     Streams = [ordered] @{
+      '5.2' = @{
+                Version = $version52
+                URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.2/$version52/zabbix_agent-$version52-windows-i386-openssl.msi"
+                URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.2/$version52/zabbix_agent-$version52-windows-amd64-openssl.msi"
+              }      
       '5.0' = @{
                 Version = $version50
-                URL32 = "https://www.zabbix.com/downloads/$version50/zabbix_agent-$version50-windows-i386-openssl.msi"
-                URL64 = "https://www.zabbix.com/downloads/$version50/zabbix_agent-$version50-windows-amd64-openssl.msi"
+                URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.0/$version50/zabbix_agent-$version50-windows-i386-openssl.msi"
+                URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.0/$version50/zabbix_agent-$version50-windows-amd64-openssl.msi"
               }
       '4.0' = @{ 
                 Version = $version40
-                URL32 = "https://www.zabbix.com/downloads/$version40/zabbix_agent-$version40-windows-i386-openssl.msi"
-                URL64 = "https://www.zabbix.com/downloads/$version40/zabbix_agent-$version40-windows-amd64-openssl.msi"
+                URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/4.0/$version40/zabbix_agent-$version40-windows-i386-openssl.msi"
+                URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/4.0/$version40/zabbix_agent-$version40-windows-amd64-openssl.msi"
               }
       '3.0' = @{ 
                 Version = $version30
-                URL32 = "https://www.zabbix.com/downloads/$version30/zabbix_agent-$version30-windows-i386-openssl.msi"
-                URL64 = "https://www.zabbix.com/downloads/$version30/zabbix_agent-$version30-windows-amd64-openssl.msi"
+                URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/3.0/$version30/zabbix_agent-$version30-windows-i386-openssl.msi"
+                URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/3.0/$version30/zabbix_agent-$version30-windows-amd64-openssl.msi"
               }
     }
   }
