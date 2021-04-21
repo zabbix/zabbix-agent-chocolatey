@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <id>zabbix-agent2</id>
+    <version>5.2.6</version>
+    <title>Zabbix Agent 2</title>
+    <authors>Zabbix</authors>
+    <owners>Marcin Bojko</owners>
+    <licenseUrl>https://www.zabbix.com/license</licenseUrl>
+    <projectUrl>https://www.zabbix.com/</projectUrl>
+    <iconUrl>https://assets.zabbix.com/img/logo/zabbix_logo_500x131.png</iconUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+# zabbix-agent2
+
+## Changelog
+
+* 2021-04-21 Version 5.2.6
+
+## Usage
+
+### Direct
+
+```
+choco install zabbix-agent2 -y
+```
+
+### YAML (Foreman, puppetlabs/chocolatey module)
+
+```
+zabbix-agent2:
+  ensure: latest
+  provider: chocolatey
+```
+
+or
+
+```
+zabbix-agent2:
+  ensure: latest
+```
+
+</description>
+    <summary>Zabbix agent 2</summary>
+    <releaseNotes>https://www.zabbix.com/release_notes</releaseNotes>
+    <copyright>Zabbix</copyright>
+    <tags>zabbix monitoring admin</tags>
+    <projectSourceUrl>https://git.zabbix.com/projects/ZBX/repos/zabbix/browse</projectSourceUrl>
+    <packageSourceUrl>https://www.zabbix.com/download_agents</packageSourceUrl>
+    <docsUrl>https://www.zabbix.com/manuals</docsUrl>
+    <bugTrackerUrl>https://support.zabbix.com/secure/Dashboard.jspa</bugTrackerUrl>
+  </metadata>
+</package>
