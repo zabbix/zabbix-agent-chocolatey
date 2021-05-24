@@ -37,11 +37,11 @@ if ($TLSPSKVALUE -ne 0) { $SilentArgs += " TLSPSKVALUE=`"$TLSPSKVALUE`"" }
 $packageArgs = @{
   PackageName    = $env:ChocolateyPackageName
   FileType       = 'MSI'
-  Url            = 'https://cdn.zabbix.com/zabbix/binaries/stable/5.2/5.2.6/zabbix_agent-5.2.6-windows-i386-openssl.msi'
-  Url64bit       = 'https://cdn.zabbix.com/zabbix/binaries/stable/5.2/5.2.6/zabbix_agent-5.2.6-windows-amd64-openssl.msi'
-  Checksum       = '4f39080414ff4de1e364c4af99dc58f3c75887e78fa8f928875839d5f2b3cf6c'
+  Url            = 'https://cdn.zabbix.com/zabbix/binaries/stable/5.4/5.4.0/zabbix_agent-5.4.0-windows-i386-openssl.msi'
+  Url64bit       = 'https://cdn.zabbix.com/zabbix/binaries/stable/5.4/5.4.0/zabbix_agent-5.4.0-windows-amd64-openssl.msi'
+  Checksum       = '83733b168c1add0cde140ef09c1d1b86a6c3332d8ee9f0f6962b639a2ebdcbaf'
   ChecksumType   = 'sha256'
-  Checksum64     = 'ffcd8bd2f3609fd542c591dc4e33dbf5ed6f9722382c125351b93a0fc7de6f74'
+  Checksum64     = '9dc35a86c4c0dc5bee476b8607095a8371676363e26e93fdf6b8cbdc2ac6c984'
   ChecksumType64 = 'sha256'
 
   SilentArgs     = $SilentArgs
