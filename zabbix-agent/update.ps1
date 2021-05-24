@@ -8,13 +8,13 @@ function global:au_SearchReplace {
     ".\tools\chocolateyInstall.ps1" = @{
       "(?i)(Url64\s*=\s*)('.*')"          = "`$1'$($Latest.URL64)'"
       "(?i)(Checksum64\s*=\s*)('.*')"     = "`$1'$($Latest.Checksum64)'"
-      "(?i)(ChecksumType64\s*=\s*)('.*')" = "`$1'$($Latest.ChecksumType64)'"      
+      "(?i)(ChecksumType64\s*=\s*)('.*')" = "`$1'$($Latest.ChecksumType64)'"
       "(?i)(Url\s*=\s*)('.*')"            = "`$1'$($Latest.URL32)'"
       "(?i)(Checksum\s*=\s*)('.*')"       = "`$1'$($Latest.Checksum32)'"
       "(?i)(ChecksumType\s*=\s*)('.*')"   = "`$1'$($Latest.ChecksumType32)'"
       "(?i)(version\s*=\s*)('.*')"        = "`$1'$($Latest.Version)'"
     }
-    
+
     ".\zabbix-agent.nuspec" = @{
       "\<version\>.+" = "<version>$($Latest.Version)</version>"
     }
@@ -34,13 +34,18 @@ function global:au_GetLatest {
 
   $download_page = Invoke-WebRequest -UseBasicParsing -Uri $url
   $versions = $download_page.Content -split '\n'
+  $version54 = ($versions | Select-String -Pattern '5.4.')[0]
   $version52 = ($versions | Select-String -Pattern '5.2.')[0]
   $version50 = ($versions | Select-String -Pattern '5.0.')[0]
   $version40 = ($versions | Select-String -Pattern '4.0.')[0]
-  $version30 = ($versions | Select-String -Pattern '3.0.')[0]
 
   @{
     Streams = [ordered] @{
+      '5.4' = @{
+                Version = $version54
+                URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.4/$version54/zabbix_agent-$version54-windows-i386-openssl.zip"
+                URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.4/$version54/zabbix_agent-$version54-windows-amd64-openssl.zip"
+              }
       '5.2' = @{
                 Version = $version52
                 URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.2/$version52/zabbix_agent-$version52-windows-i386-openssl.zip"
@@ -51,15 +56,10 @@ function global:au_GetLatest {
                 URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.0/$version50/zabbix_agent-$version50-windows-i386-openssl.zip"
                 URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.0/$version50/zabbix_agent-$version50-windows-amd64-openssl.zip"
               }
-      '4.0' = @{ 
+      '4.0' = @{
                 Version = $version40
                 URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/4.0/$version40/zabbix_agent-$version40-windows-i386-openssl.zip"
                 URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/4.0/$version40/zabbix_agent-$version40-windows-amd64-openssl.zip"
-              }
-      '3.0' = @{ 
-                Version = $version30
-                URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/3.0/$version30/zabbix_agent-$version30-windows-i386-openssl.zip"
-                URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/3.0/$version30/zabbix_agent-$version30-windows-amd64-openssl.zip"
               }
     }
   }
