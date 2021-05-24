@@ -42,7 +42,7 @@ function global:au_GetLatest {
   @{
     Streams = [ordered] @{
       '5.4' = @{
-                Version = $version30
+                Version = $version54
                 URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.4/$version54/zabbix_agent-$version54-windows-i386-openssl.msi"
                 URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.4/$version54/zabbix_agent-$version54-windows-amd64-openssl.msi"
               }
