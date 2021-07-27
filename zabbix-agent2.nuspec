@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>zabbix-agent2</id>
-    <version>5.2.6</version>
+    <version>5.2.7</version>
     <title>Zabbix Agent 2</title>
     <authors>Zabbix</authors>
     <owners>Marcin Bojko</owners>
@@ -14,6 +14,8 @@
 # zabbix-agent2
 
 ## Changelog
+
+* 2021-07-27 Version 5.2.7
 
 * 2021-04-21 Version 5.2.6
 

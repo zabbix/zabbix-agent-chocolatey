@@ -1,9 +1,9 @@
 ﻿$ErrorActionPreference = 'Stop';
 
 $packageName        = 'zabbix-agent2'
-$version            = '5.2.6'
-$url64                = "https://cdn.zabbix.com/zabbix/binaries/stable/5.2/$version/zabbix_agent2-$version-windows-amd64-openssl.msi"
-$checksum64         = "b1a3573b58cdf424845cd0adbd1a93342e1ed36dbb5d4005bfac43e14a3fffbf"
+$version            = '5.2.7'
+$url64              = "https://cdn.zabbix.com/zabbix/binaries/stable/5.2/$version/zabbix_agent2-$version-windows-amd64-openssl.msi"
+$checksum64         = "6c4183bcdae364c4df2b0fa72f70430acbbcef5ae11b059c91f68a63a565a7f1"
 $installFolder      = "$Env:ProgramFiles\zabbix-agent2"
 
 $packageArgs = @{
@@ -25,21 +25,21 @@ If (Get-Service $serviceName -ErrorAction SilentlyContinue) {
   If ((Get-Service $serviceName).Status -eq 'Running') {
         Stop-Service $serviceName -Force -ErrorAction SilentlyContinue
         Write-Host "Stopping service $serviceName"
-    }
-  Else {
+  }
+  else {
     Get-CimInstance -ClassName Win32_Service -Filter "Name=`'$serviceName`'" -ErrorAction SilentlyContinue | Remove-CimInstance -ErrorAction SilentlyContinue
     if (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Services\EventLog\Application\Zabbix Agent 2") {
-      Remove-Item "HKLM:\SYSTEM\CurrentControlSet\Services\EventLog\Application\Zabbix Agent 2" -Force -ErrorAction SilentlyContinue -Recurse
-      Write-Host "Removing registry entries for  $serviceName"
+        Remove-Item "HKLM:\SYSTEM\CurrentControlSet\Services\EventLog\Application\Zabbix Agent 2" -Force -ErrorAction SilentlyContinue -Recurse
+        Write-Host "Removing registry entries for $serviceName"
     }
     Write-Host "Removing service $serviceName"
   }
+}
 else {
   if (Test-Path "HKLM:\CurrentControlSet\Services\EventLog\Application\Zabbix Agent 2") {
-    Remove-Item "HKLM:\SYSTEM\CurrentControlSet\Services\EventLog\Application\Zabbix Agent 2" -Force -ErrorAction SilentlyContinue -Recurse
-    Write-Host "Removing registry entries for  $serviceName"
+      Remove-Item "HKLM:\SYSTEM\CurrentControlSet\Services\EventLog\Application\Zabbix Agent 2" -Force -ErrorAction SilentlyContinue -Recurse
+      Write-Host "Removing registry entries for $serviceName"
   }
-}
 }
 
 Install-ChocolateyPackage @packageArgs
