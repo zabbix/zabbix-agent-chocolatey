@@ -1,5 +1,8 @@
 # zabbix-agent2
 
+This repository is DEPRECATED and available in READ ONLY mode.
+No more chocolatey packages will be created
+
 ## Changelog
 
 * 2021-07-27 Version 5.2.7
