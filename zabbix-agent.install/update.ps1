@@ -34,7 +34,6 @@ function global:au_GetLatest {
   $download_page = Invoke-WebRequest -UseBasicParsing -Uri $url
   $versions = $download_page.Content -split '\n'
   $version54 = ($versions | Select-String -Pattern '5.4.')[0]
-  $version52 = ($versions | Select-String -Pattern '5.2.')[0]
   $version50 = ($versions | Select-String -Pattern '5.0.')[0]
   $version40 = ($versions | Select-String -Pattern '4.0.')[0]
 
@@ -45,11 +44,6 @@ function global:au_GetLatest {
                 Version = $version54
                 URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.4/$version54/zabbix_agent-$version54-windows-i386-openssl.msi"
                 URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.4/$version54/zabbix_agent-$version54-windows-amd64-openssl.msi"
-              }
-      '5.2' = @{
-                Version = $version52
-                URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.2/$version52/zabbix_agent-$version52-windows-i386-openssl.msi"
-                URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.2/$version52/zabbix_agent-$version52-windows-amd64-openssl.msi"
               }
       '5.0' = @{
                 Version = $version50
