@@ -1,0 +1,44 @@
+name: build_and_push_image
+on:
+  push:
+    branches:
+      - 'master'
+      - 'main'
+jobs:
+  build-2019:
+    runs-on: windows-2019
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Choco pack
+        uses: crazy-max/ghaction-chocolatey@v1
+        with:
+          args: pack
+      -
+        name: Choco install
+        uses: crazy-max/ghaction-chocolatey@v1
+        with:
+          args: install zabbix-agent2 -y -s .
+  build-2022:
+    runs-on: windows-2022
+    steps:
+      -
+        name: Checkout
+        uses: actions/checkout@v2
+      -
+        name: Choco pack
+        uses: crazy-max/ghaction-chocolatey@v1
+        with:
+          args: pack
+      -
+        name: Choco install
+        uses: crazy-max/ghaction-chocolatey@v1
+        with:
+          args: install zabbix-agent2 -y -s .
+      -
+        name: Choco push
+        uses: crazy-max/ghaction-chocolatey@v1
+        with:
+          args: push --source https://push.chocolatey.org/ -k=${{ secrets.CHOCO_API_KEY }} -v
