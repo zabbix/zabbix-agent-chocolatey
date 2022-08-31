@@ -21,8 +21,8 @@ environment:
   # Github token to commit pushed packages to repository
   github_user_repo: zabbix/zabbix-agent-chocolatey
   github_api_key:
-    secure: RdpPjA55jfcqUMOfXqCHGQDv5qTnjUB3+2+I2knkPbBg43AMUptGMDExCf4VHlIm
-
+    secure: InX+1jyuTorX9g69ch7ANNRBQ/If75AS4Z5W0zhvzFTn/bxqYn22BZMlBIQ8DTdw # https://ci.appveyor.com/tools/encrypt
+  
   # Mail credentials - for error notifications
   mail_user:
     secure: YOUR_EMAIL_ACCOUNT_HERE_ENCRYPTED_STRING #https://ci.appveyor.com/tools/encrypt
@@ -37,11 +37,11 @@ environment:
   gist_id: 5c9c192f36d8829a12f5c0018e999dd4
 
   # Force test: gist id for test results
-  gist_id_test:
+  gist_id_test: 4908a40b9b91198b7c346080e455e173
 
   # Chocolatey API key - to push updated packages
   api_key:
-    secure: hF6iYNSu+HX9c3B9MRKEWeVg9hSZPCmNsEGIqvGOjmMoZ0ZtjfHqSbaE7+Ld3y5U
+    secure: hF6iYNSu+HX9c3B9MRKEWeVg9hSZPCmNsEGIqvGOjmMoZ0ZtjfHqSbaE7+Ld3y5U # https://ci.appveyor.com/tools/encrypt
 
 init:
 - git config --global user.email "chocolatey@realdimensions.net"

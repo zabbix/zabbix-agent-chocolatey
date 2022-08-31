@@ -1,34 +1,34 @@
 $ErrorActionPreference = 'Stop';
 
-$packageName  = 'zabbix-agent.install'
-$softwareName = 'Zabbix Agent*'
-$installerType = 'MSI'
-$silentArgs = '/qn /norestart'
-$validExitCodes = @(0, 3010, 1605, 1614, 1641)
+$PackageName  = 'zabbix-agent.install'
+$SoftwareName = 'Zabbix Agent*'
+$InstallerType = 'MSI'
+$SilentArgs = '/qn /norestart'
+$ValidExitCodes = @(0, 3010, 1605, 1614, 1641)
 
-$uninstalled = $false
-[array]$key = Get-UninstallRegistryKey -SoftwareName $softwareName
+$Uninstalled = $false
+[array]$Key = Get-UninstallRegistryKey -SoftwareName $SoftwareName
 
-if ($key.Count -eq 1) {
-  $key | ForEach-Object {
-    $file = "$($_.UninstallString)"
+if ($Key.Count -eq 1) {
+  $Key | ForEach-Object {
+    $File = "$($_.UninstallString)"
 
-    if ($installerType -eq 'MSI') {
-      $silentArgs = "$($_.PSChildName) $silentArgs"
-       $file = ''
+    if ($InstallerType -eq 'MSI') {
+      $SilentArgs = "$($_.PSChildName) $SilentArgs"
+      $File = ''
     }
 
-    Uninstall-ChocolateyPackage -PackageName $packageName `
-                                -FileType $installerType `
-                                -SilentArgs "$silentArgs" `
-                                -ValidExitCodes $validExitCodes `
-                                -File "$file"
+    Uninstall-ChocolateyPackage -PackageName $PackageName `
+                                -FileType $InstallerType `
+                                -SilentArgs "$SilentArgs" `
+                                -ValidExitCodes $ValidExitCodes `
+                                -File "$File"
   }
-} elseif ($key.Count -eq 0) {
-  Write-Warning "$packageName has already been uninstalled by other means."
-} elseif ($key.Count -gt 1) {
-  Write-Warning "$key.Count matches found!"
+} elseif ($Key.Count -eq 0) {
+  Write-Warning "$PackageName has already been uninstalled by other means."
+} elseif ($Key.Count -gt 1) {
+  Write-Warning "$Key.Count matches found!"
   Write-Warning "To prevent accidental data loss, no programs will be uninstalled."
   Write-Warning "Please alert package maintainer the following keys were matched:"
-  $key | ForEach-Object {Write-Warning "- $_.DisplayName"}
+  $Key | ForEach-Object {Write-Warning "- $_.DisplayName"}
 }
