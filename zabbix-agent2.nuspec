@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
     <id>zabbix-agent2</id>
-    <version>6.2.1</version>
+    <version>6.2.2</version>
     <title>Zabbix Agent 2</title>
     <authors>Zabbix</authors>
     <owners>Marcin Bojko</owners>
@@ -26,6 +26,8 @@ Agent 2 is written in Go (with some C code of Zabbix agent reused). A configured
 Agent 2 does not have built-in daemonization support on Linux; it can be run as a Windows service.
 
 ## Changelog
+
+* 2022-09-20 Version 6.2.2
 
 * 2022-08-09 Version 6.2.1
 

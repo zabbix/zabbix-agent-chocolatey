@@ -1,9 +1,9 @@
 ﻿$ErrorActionPreference = 'Stop';
 
 $packageName        = 'zabbix-agent2'
-$version            = '6.2.1'
+$version            = '6.2.2'
 $url64              = "https://cdn.zabbix.com/zabbix/binaries/stable/6.2/$version/zabbix_agent2-$version-windows-amd64-openssl.msi"
-$checksum64         = "cf3babd1718591dd8336d5b4b2282455833b999a407891863d40f8e6df250640"
+$checksum64         = "4ec9255e44cf439a4c5b932d0b7921344a723e6c7558551a1c8dab83aab3aa89"
 $installFolder      = "$Env:ProgramFiles\zabbix-agent2"
 $silentArgs         = "/qn /norestart /l*v zabbix-log.txt"
 #$silentArgs         = "/qn /norestart"

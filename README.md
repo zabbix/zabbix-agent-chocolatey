@@ -16,6 +16,8 @@ Agent 2 does not have built-in daemonization support on Linux; it can be run as 
 
 ## Changelog
 
+* 2022-09-20 Version 6.2.2
+
 * 2022-08-09 Version 6.2.1
 
 * 2021-07-27 Version 5.2.7
