@@ -4,7 +4,7 @@
   <metadata>
     <!-- == PACKAGE SPECIFIC SECTION == -->
     <id>zabbix-agent.install</id>
-    <version>5.0.28</version>
+    <version>6.2.3</version>
     <packageSourceUrl>https://github.com/zabbix/zabbix-agent-chocolatey/tree/master/zabbix-agent.install</packageSourceUrl>
     <owners>Jamie Scott</owners>
     <!-- == SOFTWARE SPECIFIC SECTION == -->
