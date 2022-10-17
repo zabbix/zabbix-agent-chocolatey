@@ -1,13 +1,7 @@
 ﻿$ErrorActionPreference = 'Stop';
 
-$packageName        = 'zabbix-agent2'
-$version            = '6.2.2'
-$url64              = "https://cdn.zabbix.com/zabbix/binaries/stable/6.2/$version/zabbix_agent2-$version-windows-amd64-openssl.msi"
-$checksum64         = "4ec9255e44cf439a4c5b932d0b7921344a723e6c7558551a1c8dab83aab3aa89"
-$installFolder      = "$Env:ProgramFiles\zabbix-agent2"
-$silentArgs         = "/qn /norestart /l*v zabbix-log.txt"
-#$silentArgs         = "/qn /norestart"
-# Parameters
+$SilentArgs = "/qn /norestart"
+
 $pp = Get-PackageParameters
 if ($pp.LOGTYPE) { $SilentArgs += " LOGTYPE=`"$($pp.LOGTYPE)`"" }
 if ($pp.LOGFILE) { $SilentArgs += " LOGFILE=`"$($pp.LOGFILE)`"" }
@@ -31,46 +25,28 @@ if ($pp.LISTENIP) { $SilentArgs += " LISTENIP=`"$($pp.LISTENIP)`"" }
 if ($pp.HOSTINTERFACE) { $SilentArgs += " HOSTINTERFACE=`"$($pp.HOSTINTERFACE)`"" }
 if ($pp.HOSTMETADATA) { $SilentArgs += " HOSTMETADATA=`"$($pp.HOSTMETADATA)`"" }
 if ($pp.HOSTMETADATAITEM) { $SilentArgs += " HOSTMETADATAITEM=`"$($pp.HOSTMETADATAITEM)`"" }
-if ($pp.INSTALLFOLDER) { $SilentArgs += " INSTALLFOLDER=`"$($pp.INSTALLFOLDER)`"" } else { $SilentArgs += " INSTALLFOLDER=`"$installFolder`"" }
-if ($pp.ENABLEPATH) { $SilentArgs += " ENABLEPATH=`"$($pp.ENABLEPATH)`"" } else { $SilentArgs += " ENABLEPATH=1" }
-if ($pp.SKIP) { $SilentArgs += " SKIP=`"$($pp.SKIP)`"" } else { $SilentArgs += " SKIP=fw" }
+if ($pp.STATUSPORT) { $SilentArgs += " STATUSPORT=`"$($pp.STATUSPORT)`"" }
+if ($pp.ENABLEPERSISTENTBUFFER) { $SilentArgs += " ENABLEPERSISTENTBUFFER=`"$($pp.ENABLEPERSISTENTBUFFER)`"" }
+if ($pp.PERSISTENTBUFFERPERIOD) { $SilentArgs += " PERSISTENTBUFFERPERIOD=`"$($pp.PERSISTENTBUFFERPERIOD)`"" }
+if ($pp.PERSISTENTBUFFERFILE) { $SilentArgs += " PERSISTENTBUFFERFILE=`"$($pp.PERSISTENTBUFFERFILE)`"" }
+if ($pp.INSTALLFOLDER) { $SilentArgs += " INSTALLFOLDER=`"$($pp.INSTALLFOLDER)`"" }
+if ($pp.ENABLEPATH) { $SilentArgs += " ENABLEPATH=`"$($pp.ENABLEPATH)`"" }
+if ($pp.SKIP) { $SilentArgs += " SKIP=`"$($pp.SKIP)`"" }
 if ($pp.INCLUDE) { $SilentArgs += " INCLUDE=`"$($pp.INCLUDE)`"" }
 if ($pp.ALLOWDENYKEY) { $SilentArgs += " ALLOWDENYKEY=`"$($pp.ALLOWDENYKEY)`"" }
 
-$packageArgs = @{
-  packageName   = $packageName
-  fileType      = 'msi'
-  silentArgs    = $SilentArgs
-  validExitCodes= @(0, 3010, 1641)
-  url64bit      = $url64
-  checksumType64= 'sha256'
-  checksum64    = $checksum64
+$PackageArgs = @{
+  PackageName    = $env:ChocolateyPackageName
+  FileType       = 'MSI'
+  Url            = 'https://cdn.zabbix.com/zabbix/binaries/stable/6.2/6.2.2/zabbix_agent2-6.2.2-windows-i386-openssl.msi'
+  Url64bit       = 'https://cdn.zabbix.com/zabbix/binaries/stable/6.2/6.2.2/zabbix_agent2-6.2.2-windows-amd64-openssl.msi'
+  Checksum       = 'b9afce7403e1bc3ca4ee16a27cbe2820ded2fd0c97f865d16b3ca9ba63b7d254'
+  ChecksumType   = 'sha256'
+  Checksum64     = '4ec9255e44cf439a4c5b932d0b7921344a723e6c7558551a1c8dab83aab3aa89'
+  ChecksumType64 = 'sha256'
+
+  SilentArgs     = $SilentArgs
+  ValidExitCodes = @(0, 3010, 1641)
 }
 
-# remove previous install keys if exists
-
-$serviceName = 'Zabbix Agent 2'
-# if stopped - remove service, something went wrong
-# if running - stop, before msi update
-If (Get-Service $serviceName -ErrorAction SilentlyContinue) {
-  If ((Get-Service $serviceName).Status -eq 'Running') {
-        Stop-Service $serviceName -Force -ErrorAction SilentlyContinue
-        Write-Host "Stopping service $serviceName"
-  }
-  else {
-    Get-CimInstance -ClassName Win32_Service -Filter "Name=`'$serviceName`'" -ErrorAction SilentlyContinue | Remove-CimInstance -ErrorAction SilentlyContinue
-    if (Test-Path "HKLM:\SYSTEM\CurrentControlSet\Services\EventLog\Application\Zabbix Agent 2") {
-        Remove-Item "HKLM:\SYSTEM\CurrentControlSet\Services\EventLog\Application\Zabbix Agent 2" -Force -ErrorAction SilentlyContinue -Recurse
-        Write-Host "Removing registry entries for $serviceName"
-    }
-    Write-Host "Removing service $serviceName"
-  }
-}
-else {
-  if (Test-Path "HKLM:\CurrentControlSet\Services\EventLog\Application\Zabbix Agent 2") {
-      Remove-Item "HKLM:\SYSTEM\CurrentControlSet\Services\EventLog\Application\Zabbix Agent 2" -Force -ErrorAction SilentlyContinue -Recurse
-      Write-Host "Removing registry entries for $serviceName"
-  }
-}
-
-Install-ChocolateyPackage @packageArgs
+Install-ChocolateyPackage @PackageArgs

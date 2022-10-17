@@ -14,12 +14,12 @@
     <projectSourceUrl>https://github.com/zabbix/zabbix</projectSourceUrl>
     <bugTrackerUrl>https://support.zabbix.com/</bugTrackerUrl>
     <mailingListUrl>https://lists.sourceforge.net/lists/listinfo/zabbix-announce</mailingListUrl>
-    <iconUrl>https://cdn.statically.io/gh/zabbix/zabbix-agent-chocolatey/19b0b16a/_icons/zabbix.png</iconUrl>
+    <iconUrl>https://cdn.statically.io/gh/zabbix/zabbix-agent-chocolatey/335610e8/_icons/zabbix.png</iconUrl>
     <licenseUrl>https://www.zabbix.com/license</licenseUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <docsUrl>https://www.zabbix.com/manuals</docsUrl>
     <tags>zabbix monitoring admin</tags>
-    <summary>The Zabbix agent is used in conjunction with a Zabbix Server for monitoring a system.</summary>
+    <summary>Zabbix Agent v1, Archive for Windows</summary>
     <description>This package adds the Zabbix agent executables from the [pre-compiled files](https://www.zabbix.com/download_agents) supplied by [Zabbix LLC](https://www.zabbix.com/).
 
 The executables are placed in "%ProgramFiles%\Zabbix Agent" and the zabbix_agentd.conf file is stored in "%ProgramData%\zabbix". After this the service will be installed and set to run.

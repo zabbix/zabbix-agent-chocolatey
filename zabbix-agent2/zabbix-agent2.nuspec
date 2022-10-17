@@ -1,74 +1,64 @@
 <?xml version="1.0"?>
+<!-- Do not remove this test for UTF-8: if “Ω” doesn’t appear as greek uppercase omega letter enclosed in quotation marks, you should use an editor that supports UTF-8, not this one. -->
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
+    <!-- == PACKAGE SPECIFIC SECTION == -->  
     <id>zabbix-agent2</id>
     <version>6.2.2</version>
+    <packageSourceUrl>https://github.com/zabbix/zabbix-agent-chocolatey/tree/master/zabbix-agent2</packageSourceUrl>
+    <owners>Marcin Bojko, Jamie Scott</owners>    
+    <!-- == SOFTWARE SPECIFIC SECTION == -->    
     <title>Zabbix Agent 2</title>
-    <authors>Zabbix</authors>
-    <owners>Marcin Bojko</owners>
+    <authors>Zabbix LLC</authors>
     <projectUrl>https://www.zabbix.com/</projectUrl>
-    <iconUrl>https://assets.zabbix.com/img/logo/zabbix_logo_500x131.png</iconUrl>
-    <description>
-# zabbix-agent2
-
-## Overview
-
-Zabbix agent 2 is a new generation of Zabbix agent and may be used in place of Zabbix agent. Zabbix agent 2 has been developed to:
-
-reduce the number of TCP connections
-provide improved concurrency of checks
-be easily extendible with plugins. A plugin should be able to:
-provide trivial checks consisting of only a few simple lines of code
-provide complex checks consisting of long-running scripts and standalone data gathering with periodic sending back of the data
-be a drop-in replacement for Zabbix agent (in that it supports all the previous functionality)
-Agent 2 is written in Go (with some C code of Zabbix agent reused). A configured Go environment with a currently supported Go version is required for building Zabbix agent 2.
-
-Agent 2 does not have built-in daemonization support on Linux; it can be run as a Windows service.
-
-## Changelog
-
-* 2022-09-20 Version 6.2.2
-
-* 2022-08-09 Version 6.2.1
-
-* 2021-07-27 Version 5.2.7
-
-* 2021-04-21 Version 5.2.6
-
-## Usage
-
-### Direct
-
-```
-choco install zabbix-agent2 -y
-```
-
-### YAML (Foreman, puppetlabs/chocolatey module)
-
-```
-zabbix-agent2:
-  ensure: latest
-  provider: chocolatey
-```
-
-or
-
-```
-zabbix-agent2:
-  ensure: latest
-```
-
-</description>
-    <packageSourceUrl>https://github.com/marcinbojko/zabbix-agent2</packageSourceUrl>
-    <summary>Zabbix Agent 2 for Windows</summary>
-    <releaseNotes>https://www.zabbix.com/release_notes</releaseNotes>
-    <copyright>Zabbix</copyright>
-    <tags>zabbix monitoring agent 2 admin</tags>
-    <projectSourceUrl>https://git.zabbix.com/projects/ZBX/repos/zabbix/browse</projectSourceUrl>
-    <docsUrl>https://www.zabbix.com/manuals</docsUrl>
-    <bugTrackerUrl>https://support.zabbix.com/secure/Dashboard.jspa</bugTrackerUrl>
+    <projectSourceUrl>https://github.com/zabbix/zabbix</projectSourceUrl>
+    <bugTrackerUrl>https://support.zabbix.com/</bugTrackerUrl>
+    <mailingListUrl>https://lists.sourceforge.net/lists/listinfo/zabbix-announce</mailingListUrl>
+    <iconUrl>https://cdn.statically.io/gh/zabbix/zabbix-agent-chocolatey/335610e8/_icons/zabbix.png</iconUrl>
     <licenseUrl>https://www.zabbix.com/license</licenseUrl>
-     <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <docsUrl>https://www.zabbix.com/manuals</docsUrl>
+    <tags>zabbix monitoring admin msi agent2</tags>
+    <summary>Zabbix Agent v2, MSI installer for Windows</summary>    
+    <description><![CDATA[This package installs the Zabbix agent MSI from the [pre-compiled files](https://www.zabbix.com/download_agents) supplied by [Zabbix LLC](https://www.zabbix.com/). The source code for this Chocolatey package can be found on [GitHub](https://github.com/zabbix/zabbix-agent-chocolatey). Please file any issues you find in the project's [Issue tracker](https://github.com/zabbix/zabbix-agent-chocolatey/issues).
+
+## Package installation defaults
+
+By default, **installation** of this package:
+
+* Will install the OpenSSL version of the Zabbix agent to "%ProgramFiles%\Zabbix Agent".
+* Will set the hostname to $env:COMPUTERNAME.
+* Will set the server to 127.0.0.1.
+* Will add firewall rules.
+* Will *NOT* enable encryption.
+* Will *NOT* enable remote commands.
+
+**Please Note**: To have choco remember parameters on upgrade, be sure to set:
+```
+choco feature enable -n=useRememberedArgumentsForUpgrades`
+```
+
+## Package Parameters
+
+A full list of configuration options is available in the [Zabbix documentation](https://www.zabbix.com/documentation/current/en/manual/installation/install_from_packages/win_msi#command-line-based-installation).
+Here are some of the most commonly used:
+
+
+* `SERVER` - List of comma delimited IP addresses (127.0.0.1).
+* `SERVERACTIVE` - IP:port (or hostname:port) of Zabbix server or Zabbix proxy for active checks ($SERVER).
+* `HOSTNAME` - Unique, case sensitive hostname ($env:COMPUTERNAME)
+* `INSTALLFOLDER` - Full pathname specifying where the Zabbix agent should be installed (%ProgramFiles%\Zabbix Agent).
+* `ENABLEPATH` - Add Zabbix agent to the PATH environment variable (0).
+* `SKIP` - Passing "fw" to this parameter will skip adding the firewall exception rule.
+* `ALLOWDENYKEY` - Sequence of "AllowKey" and "DenyKey" parameters separated by ;. Use \\; to escape the delimiter.
+
+These parameters can be passed to the installer with the use of `--params`.
+
+### Examples
+`choco install zabbix-agent2 --params '"/SERVER:<Zabbix Server IP>`
+`choco install zabbix-agent2 --params '"/SERVER:192.168.6.76 /SERVERACTIVE:192.168.6.76 /HOSTNAME:zabbix-agent-1.zabbix.com /ALLOWDENYKEY:AllowKey=system.run[*] /SKIP:fw"'`
+]]></description>
+    <releaseNotes>https://www.zabbix.com/release_notes</releaseNotes>
   </metadata>
     <files>
       <file src="tools\**" target="tools" />
