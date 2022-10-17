@@ -36,7 +36,6 @@ function global:au_GetLatest {
   $version62 = $versions | Select-String -Pattern '6.2.' | Select-object -First 1
   $version60 = $versions | Select-String -Pattern '6.0.' | Select-object -First 1
   $version50 = $versions | Select-String -Pattern '5.0.' | Select-object -First 1
-  $version40 = $versions | Select-String -Pattern '4.0.' | Select-object -First 1
 
 
   @{
@@ -55,11 +54,6 @@ function global:au_GetLatest {
                 Version = $version50
                 URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.0/$version50/zabbix_agent2-$version50-windows-i386-openssl.msi"
                 URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/5.0/$version50/zabbix_agent2-$version50-windows-amd64-openssl.msi"
-              }
-      '4.0' = @{
-                Version = $version40
-                URL32 = "https://cdn.zabbix.com/zabbix/binaries/stable/4.0/$version40/zabbix_agent2-$version40-windows-i386-openssl.msi"
-                URL64 = "https://cdn.zabbix.com/zabbix/binaries/stable/4.0/$version40/zabbix_agent2-$version40-windows-amd64-openssl.msi"
               }
     }
   }
