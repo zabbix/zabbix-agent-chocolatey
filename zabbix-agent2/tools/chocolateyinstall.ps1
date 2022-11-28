@@ -38,11 +38,11 @@ if ($pp.ALLOWDENYKEY) { $SilentArgs += " ALLOWDENYKEY=`"$($pp.ALLOWDENYKEY)`"" }
 $PackageArgs = @{
   PackageName    = $env:ChocolateyPackageName
   FileType       = 'MSI'
-  Url            = 'https://cdn.zabbix.com/zabbix/binaries/stable/6.2/6.2.4/zabbix_agent2-6.2.4-windows-i386-openssl.msi'
-  Url64bit       = 'https://cdn.zabbix.com/zabbix/binaries/stable/6.2/6.2.4/zabbix_agent2-6.2.4-windows-amd64-openssl.msi'
-  Checksum       = '4140491786da7ffc8844d6431e41cf4d38407fad9bbdc57f89c8be400171c32b'
+  Url            = 'https://cdn.zabbix.com/zabbix/binaries/stable/6.2/6.2.5/zabbix_agent2-6.2.5-windows-i386-openssl.msi'
+  Url64bit       = 'https://cdn.zabbix.com/zabbix/binaries/stable/6.2/6.2.5/zabbix_agent2-6.2.5-windows-amd64-openssl.msi'
+  Checksum       = 'b3f0cf2a48d5a761c97e1ded0bbdc78854035133b58cd01e9bde2d12f548853a'
   ChecksumType   = 'sha256'
-  Checksum64     = '0b00e8df03e0e5569e7c36d0273394d476f44648f950df78271673fe5b97807d'
+  Checksum64     = 'a1f9eb682ca6252374b200018c32552fe8ed2ab1d7fe0a01f57dcf43cbc0afd7'
   ChecksumType64 = 'sha256'
 
   SilentArgs     = $SilentArgs
