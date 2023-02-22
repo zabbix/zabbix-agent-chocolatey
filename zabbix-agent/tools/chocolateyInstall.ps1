@@ -5,7 +5,7 @@ $url            = 'https://cdn.zabbix.com/zabbix/binaries/stable/6.2/6.2.7/zabbi
 $url64          = 'https://cdn.zabbix.com/zabbix/binaries/stable/6.2/6.2.7/zabbix_agent-6.2.7-windows-amd64-openssl.zip'
 $checksum       = '8a8b248b3a2bdd773cdf62816326c0d9051d15a231788c3e3c7b793425ef5827'
 $checksumType   = 'sha256'
-$checksum64     = '714957154f0fc1cf08947c25e9c0731d8f192aa2462623b3cfb47ae2e6a86a62'
+$checksum64     = '87b732d4c4113feacd021f8ca621c531aff5c66f700de6469acfa38d5f66ed3f'
 $checksumType64 = 'sha256'
 
 $configDir      = Join-Path $env:PROGRAMDATA 'zabbix'
