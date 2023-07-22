@@ -1,3 +1,8 @@
+---
+
+# :warning: Packages are now maintained here: https://github.com/mkevenaar/chocolatey-packages/
+
+---
 
 [![Build status](https://ci.appveyor.com/api/projects/status/g3s82g2nt2bt3qle?svg=true)](https://ci.appveyor.com/project/KakersUK/zabbix-agent-chocolatey)
 [Update status](https://gist.github.com/KakersUK/5c9c192f36d8829a12f5c0018e999dd4)
